@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="main" template="/WEB-INF/views/template/layout.jsp">
+    	<put-attribute name="title" value="Spring Tiles 실습"/>
+    	<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp"/>
+    	<put-attribute name="header" value="/WEB-INF/views/template/header.jsp"/>
+    	<put-attribute name="body" value="/WEB-INF/views/main_view.jsp"/>
+    	<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp"/>
+    </definition>
+    
+    <definition name="company" extends="main">
+    	<put-attribute name="title" value="회사 소개"/>
+    	<put-attribute name="body" value="/WEB-INF/views/company_view.jsp"/>
+    </definition>
+    
+    <definition name="product" extends="main">
+    	<put-attribute name="title" value="제품 소개"/>
+    	<put-attribute name="body" value="/WEB-INF/views/product_view.jsp"/>
+    </definition>
+</tiles-definitions>
