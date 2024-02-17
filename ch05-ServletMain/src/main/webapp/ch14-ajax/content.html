@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 목록</title>
+<style type="text/css">
+form{
+	width:500px;
+	margin:10px auto;
+}
+ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+ul li{
+	padding:0;
+	margin:0 0 10px 0;
+}
+label{
+	width:150px;
+	float:left;
+}
+table{
+	border:1px solid gray;
+	width:500px;
+	margin:0 auto;
+	border-collapse:collapse;
+}
+td{
+	border:1px solid gray;
+	padding:10px;
+}
+</style>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//목록
+	function selectData(){
+		$.ajax({
+			url:'getPeopleJSON.jsp',
+			dataType:'json',
+			success:function(param){
+				//table의 내부 내용물 제거(초기화)
+				$('#output').empty();
+				
+				$(param).each(function(index,item){
+					let output = '';
+					output += '<tr>';
+					output += '<td>' + item.id + '</td>';
+					output += '<td>' + item.name + '</td>';
+					output += '<td>' + item.job + '</td>';
+					output += '<td>' + item.address + '</td>';
+					output += '<td>' + item.blood_type + '</td>';
+					output += '</tr>';
+					
+					$('#output').append(output);
+				});
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	}
+	
+	//회원 정보 저장 이벤트 연결
+	$('#insert_form').submit(function(event){
+		//입력 양식의 내용을 요청 매개 변수 문자열로 만듦(파라미터 네임과 value의 쌍)
+		let input_data = $(this).serialize();
+		
+		//서버와 통신
+		$.ajax({
+			url:'insertPerson.jsp',
+			type:'post',
+			dataType:'json',
+			data:input_data,
+			success:function(param){
+				if(param.result == 'success'){
+					alert('회원가입 완료');
+					//입력창 초기화
+					$('#insert_form input[type="text"]').val('');
+					//업데이트된 목록 재호출
+					selectData();
+				}else{//param.result == 'failure'
+					alert('회원가입 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생!');
+			}
+		});
+		
+		
+		//기본 이벤트 제거
+		event.preventDefault();
+	});
+	//초기 화면에 데이터를 표시
+	selectData();
+});
+</script>
+</head>
+<body>
+<div>
+	<form id="insert_form" method="post">
+		<fieldset>
+			<legend>회원 등록</legend>
+			<ul>
+				<li>
+					<label for="id">아이디</label>
+					<input type="text" name="id" id="id">
+				</li>
+				<li>
+					<label for="name">이름</label>
+					<input type="text" name="name" id="name">
+				</li>
+				<li>
+					<label for="job">직업</label>
+					<input type="text" name="job" id="job">
+				</li>
+				<li>
+					<label for="address">주소</label>
+					<input type="text" name="address" id="address">
+				</li>
+				<li>
+					<label for="blood_type">혈액형</label>
+					<input type="text" name="blood_type" id="blood_type">
+				</li>
+				<li>
+					<input type="submit" value="추가">
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+</div>
+<table id="output"></table>
+</body>
+</html>

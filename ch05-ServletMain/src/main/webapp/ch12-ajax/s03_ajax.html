@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery를 이용한 비동기 통신 구현</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//서버 프로그램의 xml 데이터를 요청
+	$.ajax({
+		url:'myXML.jsp',
+		success:function(param){
+			$(param).find('person').each(function(){
+				let name = '<li>' + $(this).find('name').text() + '</li>';
+				let job = '<li>' + $(this).find('job').text() + '</li>';
+				let age = '<li>' + $(this).find('age').text() + '</li>';
+				
+				$('body').append('<ul>' + name + job + age + '</ul>');
+			});
+		}
+	});
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>

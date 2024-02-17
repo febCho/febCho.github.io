@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XML 데이터 목록 처리</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	//목록 처리용 함수
+	function selectData(){
+		$.ajax({
+			//type:'get' -> 기본값 : get
+			url:'getDataXML.jsp',
+			dataType:'xml',//json은 객체 처리를 위해 명시해야 하지만 xml은 생략 가능
+			success:function(param){
+				$('#disp').empty();//div 초기화
+				
+				$(param).find('item').each(function(){
+					let output = '<p>';
+					output += $(this).find('code').text() + ', ';
+					output += $(this).find('name').text() + ', ';
+					output += $(this).find('quantity').text() + ', ';
+					output += $(this).find('price').text();
+					output += '</p>';
+					
+					$('#disp').append(output);
+				});
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	}
+	//초기 데이터 설정
+	selectData();
+};
+</script>
+</head>
+<body>
+	<div id="disp"></div>
+</body>
+</html>

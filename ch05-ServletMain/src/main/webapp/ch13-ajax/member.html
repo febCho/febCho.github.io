@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아이디 중복 체크</title>
+<style type="text/css">
+ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+ul li{
+	padding:0;
+	margin:0 0 10px 0;
+}
+label{
+	width:100px;
+	float:left;
+}
+</style>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$('document').ready(function(){
+	//아이디 중복 체크 결과 : 0(아이디 중복 체크 미실시, 아이디 중복), 1(아이디 미중복)
+	let count = 0;
+	
+	//이벤트 연결
+	$('#confirmId').click(function(){
+		if($('#id').val().trim() == ''){//입력하지 않거나 공백 뿐인데 아이디 중복 체크 버튼을 눌렀다면
+			alert('아이디를 입력하세요');
+			//$('$id').val('');//공백 제거
+			//$('#id').focus();
+			$('#id').val('').focus();
+			return;
+		}
+		//서버와 통신 - 입력 맞게 하고 버튼을 눌렀다면
+		$.ajax({
+			url:'confirmId.jsp',//요청 URL
+			type:'post',//클라이언트에서 데이터를 전송할 때 전송 방식
+			data:{id:$('#id').val()},//서버로 전송될 데이터
+			dataType:'json',//서버로부터 전송되어진 데이터의 타입
+			success:function(param){
+				if(param.result == 'idDuplicated'){//아이디 중복
+					count = 0;
+					$('#id_signed').text('이미 등록된 아이디').css('color','red');
+					$('#id').val('').focus();
+				}else if(param.result == 'idNotFound'){//아이디 미중복
+					count = 1;
+					$('#id_signed').text('사용 가능한 아이디').css('color','black');
+				}else{//오류
+					count = 0;
+					alert('아이디 중복 체크 오류');
+				}	
+			},
+			error:function(){
+				count = 0;
+				alert('네트워크 오류 발생');
+			}
+		});
+	});//end of click
+	
+	//아이디 입력창에 데이터를 입력하면 중복 체크 관련 정보 초기화
+	$('#insert_form').keydown(function(){
+		count = 0;
+		$('#id_signed').text('');
+	});//end of keydown
+	
+	$('#insert_form').submit(function(){
+		if($('#id').val().trim() == ''){
+			alert('아이디를 입력하세요');
+			$('#id').val('').focus();
+			return false;
+		}
+		if(count==0){
+			alert('아이디 중복체크 필수');
+			return false;
+		}
+	});//end of submit
+});
+</script>
+</head>
+<body>
+<form id="insert_form" method="post">
+	<fieldset>
+		<legend>회원가입</legend>
+		<ul>
+			<li>
+				<label for="id">아이디</label>
+				<input type="text" name="id" id="id">
+				<input type="button" id="confirmId" value="아이디 중복 체크">
+				<span id="id_signed"></span>
+			</li>
+			<li>
+				<input type="submit" value="전송">
+			</li>
+		</ul>
+	</fieldset>
+
+</form>
+</body>
+</html>

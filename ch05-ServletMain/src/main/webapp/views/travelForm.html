@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>여행지 선택</title>
+<script type="text/javascript">
+window.onload = function(){
+	let myForm = document.getElementById('myForm');
+	//이벤트 연결
+	myForm.onsubmit = function(){
+		let name = document.getElementById('name');
+		if(name.value.trim() == ''){//이름을 입력하지 않았거나 공백만 입력했을 경우
+			alert('이름을 입력하세요');
+			name.value = '';//공백 제거
+			name.focus();
+			return false;//submit이니까
+		}
+		
+		let cities = document.getElementsByClassName("cb-city");
+		let num = 0;
+		for(let i=0;i<cities.length;i++){
+			if(cities[i].checked){
+				num++;
+			}
+		}
+		
+		if(num<2){
+			alert('여행지는 2개 이상 선택해야 합니다.');
+			return false;
+		}
+	};
+};
+</script>
+</head>
+<body>
+<h3>여행지를 선택하세요(2개 이상 선택)</h3>
+<form id="myForm" action="/ch05-ServletMain/travel" method="post">
+	이름 : <input type="text" name="name" id="name"><br>
+	여행지 선택<br>
+	<input type="checkbox" name="city" value="칸쿤" class="cb-city">칸쿤
+	<input type="checkbox" name="city" value="바르셀로나" class="cb-city">바르셀로나
+	<input type="checkbox" name="city" value="뉴욕" class="cb-city">뉴욕
+	<input type="checkbox" name="city" value="아테네" class="cb-city">아테네
+	<input type="submit" value="전송">
+</form>
+</body>
+</html>

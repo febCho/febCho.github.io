@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>할 일 목록</title>
+<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+}
+.title{
+	text-align:center;
+	font-weight:bold;
+	font-size:20pt;
+}
+.todo-done{
+	text-decoration:line-through;
+}
+.container{
+	padding:10px;
+}
+.pointer{
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="card card-body">
+		<div class="title">할 일 목록</div>
+	</div>
+	<div class="card card-default">
+		<div class="card-body">
+			<!-- 입력창 시작 -->
+			<div class="row mb-3">
+				<div class="input-group">
+					<input type="text" class="form-control"
+					name="msg" placeholder="할 일을 여기에 입력"
+					id="todo">
+					<span class="btn btn-primary input-group-addon" id="add_btn">추가</span>
+				</div>
+			</div>
+			<!-- 입력창 끝 -->
+			<!-- 목록 시작 -->
+			<div class="row">
+				<div class="col">
+					<ul class="list-group" id="list"></ul>
+				</div>
+			</div>
+			<!-- 목록 끝 -->
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	//목록 처리
+	function selectList(){
+		$.ajax({
+			url:'getTodoList.jsp',
+			dataType:'json',
+			success:function(param){
+				//<ul> 태그 초기화
+				$('#list').empty();
+				
+				$(param).each(function(index,item){
+					let output = '';
+					if(item.completed){//1이면 true = 할 일 완료
+						output += '<li class="list-group-item list-group-item-success">';
+						output += '<span class="pointer todo-done check-btn" data-id="' + item.id + '" data-check="' + item.completed + '">' + item.todo + ' (완료)</span>';
+					}else{//0이면 false = 할 일 미완료
+						output += '<li class="list-group-item">';
+						output += '<span class="pointer check-btn" data-id="' + item.id + '" data-check="' + item.completed + '">' + item.todo + ' (작성일 : ' + item.created + ')</span>';
+					}
+					output += '<span class="float-end badge bg-secondary pointer delete-btn" id="' + item.id + '">삭제</span>';
+					output += '</li>';
+					$('#list').append(output);
+				});
+			},
+			error:function(){
+				alert('네트워크 오류 발생!');
+			}
+		});
+	}
+	//초기 데이터 설정
+	selectList();
+	
+	//삭제 이벤트 연결
+	$(document).on('click','.delete-btn',function(){
+		$.ajax({
+			url:'deleteTodo.jsp',
+			type:'post',
+			data:{id:$(this).attr('id')},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'success'){
+					//목록 호출
+					selectList();
+				}else{
+					//할 일 삭제 실패
+					alert('할 일 삭제 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});
+	//할 일 체크 이벤트 연결
+	$(document).on('click','.check-btn',function(){
+		$.ajax({
+			url:'updateTodo.jsp',
+			type:'post',
+			data:{id:$(this).attr('data-id'),completed:$(this).attr('data-check')},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'success'){
+					//목록 호출
+					selectList();
+				}else{
+					//할 일 체크/해제 실패
+					alert('할 일 체크 오류 발생');
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생');
+			}
+		});
+	});
+	//엔터키 이벤트 연결
+	$('#todo').keydown(function(event){
+		if(event.keyCode == 13){
+			addTodo();
+		}
+	});
+	//추가 버튼 이벤트 연결
+	$('#add_btn').click(function(){
+		addTodo();
+	});
+	//등록 처리 함수
+	function addTodo(){
+		if($('#todo').val().trim()==''){//공백 입력 혹은 입력을 하지 않았을 시
+			alert('할 일을 입력하세요');
+			$('#todo').val('').focus();
+			return;//함수를 빠져나가 하위 코드들이 실행되지 않도록
+		}
+		$.ajax({
+			url:'insertTodo.jsp',
+			type:'post',
+			data:{todo:$('#todo').val()},
+			dataType:'json',
+			success:function(param){
+				if(param.result == 'success'){
+					//할 일 등록 성공
+					alert('할 일 등록 성공');
+					//입력 창 초기화
+					$('#todo').val('');
+					//업데이트 된 목록 재호출
+					selectList();
+				}
+			},
+			error:function(){
+				alert('네트워크 오류 발생!');
+			}
+		});
+	}
+</script>
+</body>
+</html>
