@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	$('div').html(function(index){
+		return '<h2>Header-' + index + '</h2>';
+	});
+	
+	$('h1').html(function(index,html){
+		//index : 배열의 인덱스
+		//html : 태그의 내용
+		return '**' + html + '**';
+	});
+});
+</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<hr size="1" width="100%" noshade="noshade">
+	
+	<h1>HEADER-0</h1>
+	<h1>HEADER-1</h1>
+	<h1>HEADER-2</h1>
+</body>
+</html>

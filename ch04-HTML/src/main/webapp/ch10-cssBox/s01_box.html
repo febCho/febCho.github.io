@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>박스 모델</title>
+<style type="text/css">
+/*
+태그의 테두리 밖 여백
+margin -> 속성값 4개의 순서 : 상 우 하 좌
+               3개의 순서 : 상 좌우 하
+               2개의 순서 : 상하 좌우
+               1개의 순서 : 상하좌우
+방향 표시
+margin-left, margin-right, margin-top, margin-bottom
+
+태그의 테두리 안 여백
+padding -> 속성값 4개의 순서 : 상 우 하 좌
+                3개의 순서 : 상 좌우 하
+                2개의 순서 : 상하 좌우
+                1개의 순서 : 상하좌우
+방향 표시
+padding-left, padding-right, padding-top, padding-bottom
+
+테두리(border)
+속성
+border-style : 박스 테두리의 스타일 지정
+속성값
+hidden : 테두리를 숨김
+dotted : 점
+dashed : 점선
+solid : 실선
+double : 두 줄
+groove : 테두리를 오른쪽 아래에서 빛을 받은 스타일로 지정
+ridge : 테두리를 왼쪽 위에서 빛을 받은 스타일로 지정
+outset : 테두리를 밖으로 나온 스타일로 지정
+inset : 테두리를 안으로 파인 스타일로 지정
+
+border-width : 박스 테두리의 굵기 지정
+속성값
+thin, medium, thick
+
+border-color : 박스 테두리의 색상 지정
+
+방향별로
+border-top-
+border-right-
+border-bottom-
+border-left-
+
+일괄지정
+border:style width color                              
+*/
+	ul{
+		list-style:none; /*리스트의 점 제거*/
+		background:green;
+		        /*상   우  하   좌*/
+		margin: 10px 5px 5px 10px; /*태그의 테두리 밖 여백*/
+		       /*상하좌우 모두 동일한 값 사용*/
+		padding:10px; /*태그의 테두리 안 여백*/
+	}
+	li{
+		color:red;
+		background:yellow;
+		margin:10px;
+		padding:10px;
+	}
+	li.withborder{
+		border-style:dashed; /*점선*/
+		border-width:medium; /*테두리의 두께를 중간으로 설정*/
+		border-color:black; /*테두리의 색깔*/
+	}
+</style>
+</head>
+<body>
+	<ul>
+		<li>테두리가 없는 곳</li>
+		<li class="withborder">테두리가 있는 곳</li>
+	</ul>
+</body>
+</html>

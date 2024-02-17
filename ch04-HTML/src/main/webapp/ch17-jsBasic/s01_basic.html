@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실행 위치</title>
+<script type="text/javascript">
+	/*
+	자바스크립트를 사용할 때 head에 script를 명시하고 자바스크립트를 사용할 수 있고
+	body에 script를 명시하고 자바스크립트를 사용할 수도 있음.
+	실행 순서는 head의 script 먼저 실행되면 body의 script가 실행됨
+	*/
+	document.write('heade에서 실행');
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	document.write('body에서 실행');
+</script>
+</body>
+</html>

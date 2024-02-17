@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>생성자 함수</title>
+</head>
+<body>
+<script type="text/javascript">
+	//생성자 함수 정의
+	function Animal(name,age){
+		//속성
+		this.name = name;
+		this.age = age;
+		//메서드
+		this.eat = function(){
+			document.write('맛있는 먹이를 먹습니다.');
+		};
+	}
+	
+	//생성자 함수를 이용해서 객체 생성
+	const animal = new Animal('비둘기', 10);
+	
+	//속성 호출
+	document.write(animal.name + '<br>');
+	document.write(animal.age + '<br>');
+	
+	//메서드 호출
+	animal.eat();
+</script>
+</body>
+</html>

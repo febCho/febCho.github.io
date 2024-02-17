@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체의 속성과 메서드 사용</title>
+</head>
+<body>
+<script type="text/javascript">
+	let name = '유재성';//전역 변수
+	
+	//객체 정의
+	const person = {
+			//속성 지정
+			name:'홍길동',
+			//메서드 지정
+			eat:function(food){
+				let name = '강호동';//지역 변수
+				//객체 내부에서 객체의 속성 및 메서드를 호출할 때는 this를 명시해야 호출 가능
+				//this는 객체 자신을 의미함
+				document.write(this.name + '이 ' + food + '을 먹습니다.<br>');
+				//this를 명시하지 않고 식별자를 명시하면 전역 변수 또는 지역 변수로 인식
+				document.write(name + '이 ' + food + '을 먹습니다.');
+			}
+	};
+	//메서드 호출
+	person.eat('밥');
+</script>
+</body>
+</html>

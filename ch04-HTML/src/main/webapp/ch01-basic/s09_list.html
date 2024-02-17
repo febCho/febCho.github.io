@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>목록</title>
+</head>
+<body>
+<h3>순서 없는 목록</h3>
+<!-- ul : unordered list -->
+<ul>
+	<li>유치원</li>
+	<li>초등학교</li>
+	<li>중학교</li>
+	<li>고등학교</li>
+	<li>대학교</li>
+</ul>
+
+<ul type="circle">
+	<li>유치원</li>
+	<li>초등학교</li>
+	<li>중학교</li>
+	<li>고등학교</li>
+	<li>대학교</li>
+</ul>
+	
+<ul type="square">
+	<li>유치원</li>
+	<li>초등학교</li>
+	<li>중학교</li>
+	<li>고등학교</li>
+	<li>대학교</li>
+</ul>
+
+<h3>순서 있는 목록</h3>
+<!-- ol : ordered list -->
+<ol>
+	<li>봄</li>
+	<li>여름</li>
+	<li>가을</li>
+	<li>겨울</li>
+</ol>
+
+<!-- reversed: 항목을 역순으로 표시 -->
+<ol reversed="reversed">
+	<li>봄</li>
+	<li>여름</li>
+	<li>가을</li>
+	<li>겨울</li>
+</ol>
+
+<!-- type 속성을 이용해서 순서 표시를 숫자, 문자 지정 가능 -->
+<ol type="a">
+	<li>봄</li>
+	<li>여름</li>
+	<li>가을</li>
+	<li>겨울</li>
+</ol>
+
+<ol type="I">
+	<li>봄</li>
+	<li>여름</li>
+	<li>가을</li>
+	<li>겨울</li>
+</ol>
+
+<ol type="i">
+	<li>봄</li>
+	<li>여름</li>
+	<li>가을</li>
+	<li>겨울</li>
+</ol>
+
+<!-- 순서 있는 목록 : 100번부터 시작해서 중간에 200번으로 점프하기 -->
+<ol type="1" start="100">
+	<li>봄</li>
+	<li>여름</li>
+	<li value="200">가을</li>
+	<li>겨울</li>
+</ol>
+
+<h3>ul 태그 하위 요소로 ol 태그 사용</h3>
+<ul type="square">
+	<li>로맨틱 코미디
+		<ol>
+			<li>해리와 샐리가 만났을 때</li>
+			<li>당신이 잠든 사이에</li>
+		</ol>
+	</li>
+	<li>액션
+		<ol>
+			<li>글래디에이터</li>
+			<li>007 어나더데이</li>
+			<li>턱시도</li>
+			<li>나쁜녀석들</li>
+		</ol>
+	</li>
+	<li>스릴러
+		<ol>
+			<li>숨바꼭질</li>
+			<li>잠</li>
+			<li>오펀 천사의 비밀</li>		
+		</ol>
+	</li>
+</ul>
+
+<h3>dl, dt, dd 태그 : 설명 목록 만들기</h3>
+<!-- <dl> 태그는 제목과 설명이 한 쌍인 설명 목록을 만듦 -->
+<dl><!-- dl : definition list(정의 목록)-->
+	<dt>올레 1코스</dt><!-- definition term(정의 용어: 제목) -->
+	<dd>코스 : 시흥 초등학교 - 광치기 해변</dd><!-- definition term(정의 설명: 설명) -->
+	<dd>거리 : 14.6km(4~5시간)</dd>
+	<dt>올레 2코스</dt>
+	<dd>코스 : 광치기 해변 - 온평 포구</dd>
+	<dd>거리 : 14.5km(4~5시간)</dd>
+</dl>
+</body>
+</html>

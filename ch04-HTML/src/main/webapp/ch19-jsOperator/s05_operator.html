@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>삼항연산자</title>
+</head>
+<body>
+<script type="text/javascript">
+	var temp1 = 5, temp2 = 10;
+	var max, min;
+	
+	//두 숫자의 크기를 비교하여 ma와 min 변수에 저장
+	
+	//조건           ?      조건이 참일 때 식      :      조건이 거짓일 때 식
+	temp1 >= temp2 ? (max=temp1, min=temp2) : (max=temp2, min=temp1);
+	document.write('큰 값 = ' + max + '<br>');
+	document.write('작은 값 = ' + min);
+</script>
+</body>
+</html>

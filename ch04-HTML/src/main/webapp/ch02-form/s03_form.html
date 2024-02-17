@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<form action="signup.jsp" method="get">
+	<fieldset>
+		<legend>새 계정을 만듭니다.</legend>
+		<ul>
+			<li>
+				<!-- placeholder : 힌트 기능 -->
+				<!-- autocomplete : 자동 완성 -->
+				<label for="name">이름</label>
+				<input type="text" name="name" id="name"
+								   placeholder="이름 입력" autocomplete="off">
+			</li>
+			<li>
+				<label for="id">아이디</label>
+				<input type="text" name="id" id="id"
+								   placeholder="아이디 입력" autocomplete="off">
+			</li>
+			<li>
+				<label for="password">비밀번호</label>
+				<input type="password" name="password" id="password"
+									   placeholder="비밀번호 입력">
+			</li>
+			<li>
+				<label for="job">직업</label>
+				<input type="text" name="job" list="job">
+				<datalist id="job">
+					<option value="학생">
+					<option value="의사">
+					<option value="프로그래머">
+					<option value="프로게이머">
+				</datalist>
+			</li>
+			<li>
+				<input type="submit" value="전송">
+			</li>
+		</ul>
+	</fieldset>
+</form>
+</body>
+</html>

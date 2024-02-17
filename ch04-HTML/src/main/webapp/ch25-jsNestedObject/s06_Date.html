@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date</title>
+</head>
+<body>
+<script type="text/javascript">
+	const now = new Date();
+	
+	document.write('now의 값 : ' + now + '<br>');
+	document.write('now.toString() : ' + now.toString() + '<br>');
+	
+	document.write('오늘 : ' + now.toLocaleString() + '<br>');
+	document.write('오늘의 날짜 : ' + now.toLocaleDateString() + '<br>')
+	document.write('오늘의 시간 : ' + now.toLocaleTimeString() + '<br>');
+	document.write('----------------<br>');
+	
+	document.write('연도 : ' + now.getFullYear() + '<br>');
+	document.write('월 : ' + (now.getMonth() + 1) + '<br>');//0~11
+	document.write('일 : ' + now.getDate() + '<br>');
+	document.write('요일 : ' + now.getDay() + '<br>');//0(일)~6(토)
+	
+	document.write('시 : ' + now.getHours() + '<br>');//0~23
+	document.write('분 : ' + now.getMinutes() + '<br>');
+	document.write('초 : ' + now.getSeconds() + '<br>');
+	document.write('밀리초 : ' + now.getMilliseconds());
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그명을 통해 문서 객체 탐색</title>
+<script type="text/javascript">
+//윈도우가 로드될 때 호출
+window.onload = function(){
+	//태그명을 통해서 태그를 탐색해서 문서 객체로 반환
+	//복수의 태그가 존재할 수 있기 때문에 배열로 반환
+	let spans = document.getElementsByTagName('span');
+	spans[0].innerHTML = '달빛이 찬란한 호수';
+	spans[1].innerHTML = '흰 눈이 눈 부신 들판';
+};
+</script>
+</head>
+<body>
+	<span>하늘</span><br>
+	<span>하늘</span>
+</body>
+</html>

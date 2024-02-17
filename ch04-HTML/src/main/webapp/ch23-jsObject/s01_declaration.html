@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체</title>
+</head>
+<body>
+<script type="text/javascript">
+	//객체 정의
+	const product = {
+			//속성(key(프로퍼티):value)
+			제품명:'휴대폰',
+			제품번호:'A1001',
+			기능:'멀티윈도우',
+			원산지:'대한민국',
+			가격:1000,
+			업데이트지원:true,//마지막 쉼표는 무시됨
+	};
+	
+	//객체의 속성 호출
+	//               객체명.key
+	document.write(product.제품명 + '<br>');
+	document.write(product.원산지 + '<br>');
+	//               객체명[key]
+	document.write(product['가격'] + '<br>');
+	document.write(product['업데이트지원']);
+	
+</script>
+</body>
+</html>

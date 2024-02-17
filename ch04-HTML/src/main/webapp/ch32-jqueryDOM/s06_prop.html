@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	//prop() : 선택한 요소의 속성을 반환/생성/변환
+	$('#st_1').prop('title','단락 태그');
+	//text() : 태그의 내용을 제어, HTML 태그를 허용하지 않고 text로 처리
+	$('#txt1').text($('#st_1').prop('title'));//title 속성의 값 반환
+	$('#txt2').text($('#st_1').prop('tagName'));//태그명을 반환
+	//select 태그의 선택한 option index 반환
+	$('#txt3').text($('#sel').prop('selectedIndex'));
+});
+</script>
+</head>
+<body>
+	<p id="st_1">내용1</p>
+	<p id="txt1"></p>
+	<p id="txt2"></p>
+	<select id="sel">
+		<option value="네이버">네이버</option>
+		<option value="다음" selected="selected">다음</option>
+		<option value="네이트">네이트</option>
+	</select>
+	<p id="txt3"></p>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실습</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+[실습]
+생성자 함수(Account)를 이용해서 은행 계좌 생성하는 프로그램
+속성 : 계좌번호, 예금주, 비밀번호, 잔고
+메서드 : 입금 메서드(deposit), 출금 메서드(withdraw), 출력 메서드(toString)
+실행 순서 -> 계좌 생성, 입금하기, 출금하기, 은행 정보 출력
+[출력 예시]
+계좌번호 : 010123
+예금주 : 홍길동
+잔고 : 1000원
+ */
+	//생성자 함수 정의
+	function Account(num, name, passwd, balance){
+		//속성 지정
+		this.계좌번호 = num;
+		this.예금주 = name;
+		this.비밀번호 = passwd;
+		this.잔고 = balance;
+		
+		this.deposit = function(money){
+			this.잔고 += money;
+		};
+		
+		this.withdraw = function(money){
+			this.잔고 -= money;
+		};
+		
+		this.toString = function(){
+			return '계좌번호 : ' + this.계좌번호 + '<br>예금주 : '
+			       + this.예금주 + '<br>잔고 : ' + this.잔고 + '원<br>';
+		
+		};
+	};
+	
+	/*
+	Account.prototype.deposit = function(money){
+		this.잔고 += money;
+	};
+	
+	Account.prototype.withdraw = function(money){
+		this.잔고 -= money;
+	};
+	
+	Account.prototype.toString = function(){
+		return '계좌번호 : ' + this.계좌번호 + '<br>예금주 : ' 
+		        + this.예금주 + '<br>잔고 : ' + this.잔고 + '원<br>';
+	};
+	*/
+	
+	const account = new Account('010123','홍길동','1234',1000);
+	document.write(account);
+	document.write('------------------<br>');
+	
+	//입금하기
+	account.deposit(500);
+	document.write(account);
+	document.write('------------------<br>');
+	
+	//출금하기
+	account.withdraw(600);
+	document.write(account);
+	document.write('------------------<br>');
+	
+	/*
+	//빈 배열 생성
+	const accounts = [];
+	accounts.push(new Account('010123','홍길동','1234', 1000));
+	
+	for(let i in accounts){
+		document.write(accounts[i].toString() + '<br>');
+	}
+	
+	accounts[0].deposit(500);
+	for(let i in accounts){
+		document.write(accounts[i].toString() + '<br>');
+	}
+	*/
+	
+</script>
+</body>
+</html>

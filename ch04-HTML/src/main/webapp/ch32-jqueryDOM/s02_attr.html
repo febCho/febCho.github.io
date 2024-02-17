@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<style type="text/css">
+.item{color:red;}
+.select{background:yellow;}
+</style>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	//3초 후에 img 태그의 src 속성값 읽기
+	setTimeout(function(){
+		let src = $('img').attr('src');//img 태그의 src 속성의 값을 반환
+		alert(src);
+	},3000);
+	
+});
+</script>
+</head>
+<body>
+	<img src="../files/blue.jpg">
+</body>
+</html>

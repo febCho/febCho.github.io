@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>overflow</title>
+<style type="text/css">
+	.div01{
+		background-color:yellow;
+		width:200px;
+		height:100px;
+		overflow:hidden; /*내용이 정해진 크기를 벗어날 때 숨김*/
+	}
+	.div02{
+		background-color:pink;
+		width:200px;
+		height:100px;
+		/*내용이 정해진 크기를 벗어나도 스크롤이 생겨서 내용을 볼 수 있음*/
+		overflow:auto;
+	}
+</style>
+</head>
+<body>
+<div class="div01">
+	엘리먼트가 잘리거나 부모 엘리먼트의 넓이와 높이가 내용을 다 보여줄 만큼 크지 않으면
+	일부 콘텐츠가 보이지 않게 되는 부분을 overflow를 이용해서 처리하는 방식을 지정할
+	수 있다.
+</div>
+<br><br>
+<div class="div02">
+	엘리먼트가 잘리거나 부모 엘리먼트의 넓이와 높이가 내용을 다 보여줄 만큼 크지 않으면
+	일부 콘텐츠가 보이지 않게 되는 부분을 overflow를 이용해서 처리하는 방식을 지정할
+	수 있다.
+</div>
+</body>
+</html>

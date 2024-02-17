@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<style>
+div{
+	margin:5px;
+	padding:5px;
+	border-width:3px;
+	border-style:solid;
+	border-color:black;
+	border-radius:10px;
+}
+</style>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	//이벤트 연결
+	$('div').on('click',function(){
+		//이벤트가 발생한 태그의 하위 태그 중 h1 태그
+		let header = $('h1',this).text();
+		//이벤트가 발생한 태그의 하위 태그 중 p 태그
+		let paragraph = $('p',this).text();
+		
+		alert(header + '\n' + paragraph);
+	});
+});
+</script>
+</head>
+<body>
+	<div>
+		<h1>Header1</h1>
+		<p>Paragraph1</p>
+	</div>
+	<div>
+		<h1>Header2</h1>
+		<p>Paragraph2</p>
+	</div>
+	<div>
+		<h1>Header3</h1>
+		<p>Paragraph3</p>
+	</div>
+</body>
+</html>

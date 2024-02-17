@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>내부함수</title>
+</head>
+<body>
+<script type="text/javascript">
+	function f(){
+		//내부함수
+		function g(){
+			document.write('g is called');
+		}
+		//내부함수 호출
+		g();
+	}
+	//함수 호출
+	f();
+	
+</script>
+</body>
+</html>

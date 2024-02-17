@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	//이벤트 연결
+	$('textarea').keyup(function(){
+		//입력한 글자 수를 구함
+		//val() : value에 저장된 값 반환
+		let inputLength = $(this).val().length;
+		let remain = 30 - inputLength;
+		
+		//문서 객체에 입력
+		$('h1').text(remain);//html()로 해도 관련 없음
+		
+		//문서 객체에 색상을 변경
+		if(remain >= 0){
+			$('h1').css('color','black');
+		}else{
+			$('h1').css('color','red');
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<div>
+		<p>지금 내 생각을</p>
+		<h1>30</h1>
+		<textarea rows="5" cols="70" maxlength="30"></textarea>
+	</div>
+</body>
+</html>

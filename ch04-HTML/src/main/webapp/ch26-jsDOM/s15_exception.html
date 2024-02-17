@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예외처리</title>
+</head>
+<body>
+<script type="text/javascript">
+	try{
+		let result = 10/0;
+		
+		if(!isFinite(result)){
+			//예외를 일부러 발생시킴
+			throw 'DivideByZeroException';
+		}
+		document.write(result);
+	}catch(exception){
+		document.write(exception);
+	}
+</script>
+</body>
+</html>

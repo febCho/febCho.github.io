@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수</title>
+<script type="text/javascript">
+	//선언적 함수
+	function check(){
+		document.write('호출하면 동작함<br>');
+	}
+	//함수 호출
+	check();
+	
+	function check2(msg){
+		document.write(msg + '을 좋아합니다.<br>');
+	}
+	//함수 호출
+	check2('가을');
+	
+	function check3(num){
+		return num*num;
+	}
+	//함수 호출
+	var number = check3(10);
+	document.write('number = ' + number + '<br>');
+	
+	//익명 함수
+	var play = function(){
+		document.write('운동을 좋아해요~~<br>');
+	};
+	//함수 호출
+	play();
+	
+	var play2 = function(item){
+		document.write(item + '를 좋아해요<br>');
+	};
+	//함수 호출
+	play2('축구');
+	
+	var play3 = function(x,y){
+		return x + y;
+	};
+	//함수 호출
+	var result = play3(5,8);
+	document.write('result = ' + result + '<br>');
+	
+	//정의한 함수를 인라인 방식으로 호출하기
+	function checkIt(){
+		alert('인라인 방식으로 함수 호출하기');
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="확인" onclick="checkIt()">
+</body>
+</html>

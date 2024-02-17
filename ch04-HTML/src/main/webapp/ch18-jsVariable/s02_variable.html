@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수 사용 시 주의사항</title>
+</head>
+<body>
+<script type="text/javascript">
+	var food='김치찌개'; //변수 선언 및 초기화
+	document.write(food + '<br>');
+	
+	food = '라면'; //데이터 변경
+	document.write(food + '<br>');
+	document.write('------------------<br>');
+	
+	//변수명이 같게 선언되어도 오류가 발생하지 않음
+	var food = '냉면';
+	document.write(food);
+</script>
+</body>
+</html>

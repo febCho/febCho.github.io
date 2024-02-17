@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>name 속성을 이용한 문서 객체 탐색</title>
+<script type="text/javascript">
+window.onload = function(){
+	let prev = document.getElementsByName('prev');
+	let next = document.getElementsByName('next');
+	
+	prev[0].innerHTML = '이전';
+	next[0].innerHTML = '다음';
+	
+	let country = document.getElementsByName('country');
+	country[0].checked = true;
+	
+	let comment = document.getElementsByName('comment');
+	comment[0].value = '간단한 설명 입력';
+	
+};
+</script>
+</head>
+<body>
+	<button name = "prev">prev</button>
+	<button name="next">next</button>
+	<br>
+	<input type="checkbox" name="country" value="한국">한국
+	<input type="checkbox" name="country" value="미국">미국
+	<input type="checkbox" name="country" value="중국">중국
+	<br>
+	<input type="text" name="comment">
+</body>
+</html>

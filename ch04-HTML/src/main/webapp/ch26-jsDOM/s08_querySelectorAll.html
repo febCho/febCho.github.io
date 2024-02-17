@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>querySelectorAll</title>
+</head>
+<body>
+	<ul>
+		<li>서울</li>
+		<li>부산</li>
+		<li>대구</li>
+	</ul>
+	<script type="text/javascript">
+		//ul 요소의 자식 요소인 li 요소를 모두 탐색하여 반환
+		let elems = document.querySelectorAll('ul > li');
+		
+		for(let i=0;i<elems.length;i++){
+			document.write(elems[i].innerHTML + '<br>');
+		}
+		
+		elems.forEach(function(item){
+			item.style.color = 'blue';
+		});
+	</script>
+</body>
+</html>

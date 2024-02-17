@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클래스의 정의</title>
+</head>
+<body>
+<script type="text/javascript">
+//클래스 선언
+class Person{
+	//생성자
+	constructor(name){
+		//인스턴스 생성 및 초기화
+		//인스턴스 프로퍼티
+		this.name = name;
+	}
+	//메서드
+	sayHi(){
+		document.write('Hi My name is ' + this.name);
+	}
+	//정적 메서드 = 자바의 static
+	static sayHello(){
+		document.write('Hello!');
+	}
+}
+//인스턴스 생성
+const me = new Person('Lee');
+//인스턴스의 프로퍼티 참조
+document.write(me.name + '<br>');
+//메서드 호출
+me.sayHi();
+document.write('<br>');
+//정적 메서드 호출
+Person.sayHello();
+</script>
+</body>
+</html>

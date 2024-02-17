@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 사용 시 주의사항</title>
+</head>
+<body>
+<script type="text/javascript">
+	//함수의 이름이 같을 경우 마지막 함수 호출
+	function 함수(){
+		document.write('함수 A<br>');
+	}
+	
+	function 함수(){
+		document.write('함수 B<br>');
+	}
+	//함수 호출
+	함수();
+	
+	document.write('----------------------<br>');
+	
+	//함수 호출
+	함수2();
+	
+	function 함수2(){
+		document.write('함수2<br>');
+	}
+	document.write('----------------------<br>');
+	
+	//변수 선언은 중복될 수 있고 호출은 마지막 변수가 호출됨
+	//익명 함수를 대입하면 마지막 함수가 호출
+	var 함수3 = function(){
+		document.write('함수C<br>');
+	}
+	
+	var 함수3 = function(){
+		document.write('함수D<br>');
+	}
+	//함수 호출
+	함수3();
+	
+	document.write('----------------------<br>');
+	
+	//함수4();//오류 발생
+	
+	//익명 함수로 함수를 정의하면 함수 호이스팅이 발생하는 것이 아니라
+	//변수 호이스팅이 발생함. 익명 함수 이전에 함수를 참조하면 undefined로 평가됨
+	var 함수4 = function(){
+		document.write('함수4');
+	}
+</script>
+</body>
+</html>

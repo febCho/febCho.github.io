@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery UI</title>
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#dialog').dialog({
+		resizable:false,
+		height:200,
+		modal:true,
+		buttons:{
+			'Delete all items':function(){
+				$(this).dialog('close');
+			},
+			cancel:function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<div id="dialog" title="Modal dialog">
+		<p>화면에 마치 윈도우 창처럼 보여지는 요소로 
+		현재 화면을 벗어날 수 없지만 화면 내에서는 이동이 가능함</p>
+	</div>
+	
+	<div>
+		Welcome to My page
+	</div>
+</body>
+</html>

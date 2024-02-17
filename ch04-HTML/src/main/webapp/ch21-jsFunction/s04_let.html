@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>let</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	ES6에서 변수를 정의하는데 let을 사용할 수 있고, 상수를 정의하는데는 const를 사용할 수 있음.
+	이들은 블록 레벨의 스코프임
+	*/
+	
+	for(let i=1;i<=3;i++){//블록 레벨 스코프(let)이기 때문에 제어문 안 전역변수도 소멸
+		document.write(i + '<br>');
+	}
+	//document.write(i);//제어문 블록을 벗어나서 소멸됨
+	document.write('-------------------<br>');
+	
+	let i = 10;//전역 변수
+	document.write("전역변수 : " + i + '<br>');
+	
+	function text2(){
+		let i = 20;//지역변수 우선
+		document.write(i + '<br>');
+	}
+	//함수 호출 - 같은 변수명을 가지고 있지만 함수 안 지역변수가 우선, 20 출력
+	text2();
+	
+	//함수 안에서 let을 명시한 지역변수는 함수를 벗어나면서 소멸
+	//-> 그런데 전역변수는 소멸되지 않고 남아 있어 전역변수가 호출, 10 출력
+	document.write(i);
+</script>
+</body>
+</html>

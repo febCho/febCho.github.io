@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스</title>
+<style type="text/css">
+	#canvas{
+		border:1px solid #999999;
+	}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		context.fillStyle = 'rgb(200,0,0)';//색상 지정
+		context.fillRect(0,0,100,100);//사각형 x,y,width,height
+		
+		context.fillRect(150,150,100,100);//사각형 x,y,width,height
+		
+		//색상 및 알파값 지정(0.0 완전 투명 ~ 1.0 완전 불투명)
+		context.fillStyle = 'rgba(0,0,200,0.5)';
+		context.fillRect(150,200,100,100);//사각형 x,y,width,height
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="300"></canvas>
+</body>
+</html>

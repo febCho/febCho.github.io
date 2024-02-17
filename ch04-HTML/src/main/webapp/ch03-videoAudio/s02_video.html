@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>동영상</title>
+</head>
+<body>
+<h3>다양한 동영상 포맷 사용</h3>
+<video src="../files/river.mp4" width="320" height="240" controls></video>
+<video src="../files/river.webm" width="320" height="240" controls></video>
+<video src="../files/river.ogv" width="320" height="240" controls></video>
+<video src="../files/river.mov" width="320" height="240" controls></video>
+
+<h3>동영상 파일을 브라우저 호환성 있게 링크하기</h3>
+<video width="320" height="240" controls>
+	<source src="../files/river.mp4" type="video/mp4"></source>
+	<source src="../files/river.webm" type="video/webm"></source>
+	<source src="../files/river.ogv" type="video/ogg"></source>
+	<!-- mov를 사용할 경우 type 생략해야 동작 -->
+	<source src="../files/river.mov"></source>
+</video>	
+</body>
+</html>

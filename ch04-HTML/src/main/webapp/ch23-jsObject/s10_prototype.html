@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>프로토타입을 사용한 메서드 정의</title>
+</head>
+<body>
+<script type="text/javascript">
+	//생성자 함수 정의
+	function Student(name,korean,math,english,science){
+		//속성 지정
+		this.이름 = name;
+		this.국어 = korean;
+		this.수학 = math;
+		this.영어 = english;
+		this.과학 = science;
+	}
+	//프로토타입은 생성자 함수를 사용해 생성된 객체가 공통으로 가지는 공간
+	Student.prototype.getSum = function(){
+		return this.국어 + this.수학 + this.영어 + this.과학;
+	};
+	Student.prototype.getAverage = function(){
+		return this.getSum()/4;
+	};
+	Student.prototype.toString = function(){
+		return this.이름 + ', ' + this.getSum() + ', ' + this.getAverage();
+	};
+	
+	//빈 배열 생성
+	const students = [];
+	students.push(new Student('박문수',99,98,91,88));
+	students.push(new Student('장영실',80,98,50,88));
+	students.push(new Student('김유신',99,70,91,68));
+	students.push(new Student('이순신',100,98,100,88));
+	students.push(new Student('강호동',100,98,99,77));
+	
+	//출력
+	document.write('이름, 총점, 평균<br>');
+	for(let i in students){
+		document.write(students[i].toString() + '<br>');
+	}
+</script>
+</body>
+</html>

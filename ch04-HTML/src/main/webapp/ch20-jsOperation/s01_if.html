@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>if</title>
+</head>
+<body>
+<script type="text/javascript">
+	var score = prompt('당신의 점수를 입력하세요', '');
+	var grade;
+	
+	if(score >= 90 && score <= 100){
+		grade = 'A';
+	}else if(score >= 80 && score < 90){
+		grade = 'B';
+	}else if(score >= 70 && score < 80){
+		grade = 'C';
+	}else if(score >= 60 && score < 70){
+		grade = 'D';
+	}else if(score >= 0 && score <60){
+		grade = 'F';
+	}else{
+		grade = '?';
+	}
+	
+	document.write('점수 : ' + score + '<br>');
+	document.write('등급 : ' + grade);
+</script>
+</body>
+</html>

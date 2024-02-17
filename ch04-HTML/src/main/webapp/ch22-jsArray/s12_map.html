@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>map</title>
+</head>
+<body>
+<script type="text/javascript">
+	const array = [1,2,3,4,5,6,7,8,9,10];
+	//map() : 값을 새롭게 정의한 후 새로운 배열을 만들어 반환
+	const new_array = array.map(function(element,index,array){
+		return element * element;
+	});
+	
+	document.write(new_array);
+</script>
+</body>
+</html>

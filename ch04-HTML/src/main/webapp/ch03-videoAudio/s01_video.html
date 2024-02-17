@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>동영상 표시</title>
+</head>
+<body>
+<h3>video 태그를 이용한 동영상 표시</h3>
+<!-- controls : 제어판 생성, autoplay : 자동 실행(실행 안 됨) -->
+<video src="../files/river.mp4" width="320" height="240" autoplay controls></video>
+
+<!-- autoplay : 자동실행(muted를 명시해야 자동 실행됨), muted : 움소거 -->
+<video src="../files/river.mp4" width="320" height="240" autoplay muted controls></video>
+
+<!-- poster : 동영상 파일이 호출되기 전에 미리 보여지는 정지 이미지 -->
+<video src="../files/river.mp4" width="320" height="240"
+           controls poster="../files/poster.jpg"></video>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>location</title>
+</head>
+<body>
+<!-- 페이지 이동을 할 수 있고 history 정보가 남아있어서 원래 페이지로 돌아갈 수 있음 -->
+<input type="button" value="이동(href)"
+	                 onclick = "location.href='s02_window.html'"><br>
+<input type="button" value="이동(assign)"
+                     onclick = "location.assign('s04_location.html')"><br>
+<!-- 페이지 이동을 할 수 있고 history 정보가 지워짐 -->                     
+<input type="button" value="이동(replace)"
+                     onclick = "location.replace('s02_window.html')"><br>
+<input type="button" value="새로고침" onclick="location.reload()">                                       	                 
+</body>
+</html>

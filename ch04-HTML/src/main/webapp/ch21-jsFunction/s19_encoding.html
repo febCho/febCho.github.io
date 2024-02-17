@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>encoding 관련 함수</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+함수 이름                       설명
+escape(url)                  적절한 정도로 인코딩함
+unescape(url)                적절한 정도로 디코딩함
+encodeURI(url)               최소한의 문자만 인코딩함
+decodeURI(url)               최소한의 문자만 디코딩함
+encodeURIComponent(url)      대부분의 문자를 인코딩함
+decodeURIComponent(url)      대부분의 문자를 디코딩함
+ */
+	let URL = 'http://www.naver.com?test=한글입니다.';
+	let output = '';
+	output += '*escape()<br>';
+	output += escape(URL) + '<br><br>';
+	output += '*encodeURI()<br>';
+	output += encodeURI(URL) + '<br><br>';
+	output += '*encodeURIComponent()<br>';
+	output += encodeURIComponent(URL);
+	
+	document.write(output);
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>속성 제거</title>
+</head>
+<body>
+<script type="text/javascript">
+	//객체 정의
+	const product = {};
+	
+	//객체에 속성 추가
+	product.이름 = '건조기';
+	product.가격 = 20000;
+	product.색상 = '흰색';
+	product.제조사 = 'LG';
+	
+	//toString() 메서드 추가
+	product.toString = function(){
+		let output = '';
+		for(let key in this){
+			if(key != 'toString'){
+				output += key + ' : ' + this[key] + '<br>';
+			}
+		}
+		return output;
+	};
+	
+	document.write(product);
+	document.write('---------------------<br>');
+	
+	//속성을 제거
+	delete product.제조사;
+	document.write(product);
+</script>
+</body>
+</html>

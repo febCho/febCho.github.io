@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	$('img').css('width',250);
+	
+	//함수를 2초마다 실행
+	setInterval(function(){
+		//첫번째 이미지를 마지막으로 보냄
+		$('img').first().appendTo('body');
+	},2000);
+});
+</script>
+</head>
+<body>
+	<img src="../files/Chrysanthemum.jpg">
+	<img src="../files/Desert.jpg">
+	<img src="../files/Hydrangeas.jpg">
+	<img src="../files/Jellyfish.jpg">
+	<img src="../files/Koala.jpg">
+</body>
+</html>

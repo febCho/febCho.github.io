@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+/*
+메서드 이름                   설명
+$(A).append(B)            B를 A의 기존 자식의 뒤에 추가
+$(A).prepend(B)           B를 A의 기존 자식의 앞에 추가
+$(A).after(B)             B를 A의 뒤에 형제로 추가
+$(A).before(B)            B를 A의 앞에 형제로 추가
+ */
+	//$('div').append('<h1>Hello jQuery</h1>');
+	//$('div').prepend('<h1>Hello JavaScript</h1>');
+	//$('div').after('<h1>Hello CSS</h1>');
+	$('div').before('<h1>Hello Bootstrap</h1>');
+});
+</script>
+</head>
+<body>
+	<div>
+		<h1>여기는 서울</h1>
+	</div>
+</body>
+</html>

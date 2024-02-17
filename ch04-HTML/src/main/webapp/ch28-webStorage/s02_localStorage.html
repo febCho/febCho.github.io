@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로컬 스토리지</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+</script>
+<script type="text/javascript">
+window.onload = function(){
+	let save = document.getElementById('save');
+	save.onclick = function(){
+		//사용자가 입력한 번호, 이름, 주소를 읽어옴
+		let num = document.getElementById('num');
+		let name = document.getElementById('name');
+		let addr = document.getElementById('addr');
+		
+		//JSON(JavaScript Object Notation) 형태의 문자열 생성
+		let memberStr = '{"num":'+num.value+',"name":"'+name.value+'","addr":"'+addr.value+'"}';
+		
+		//로컬 스토리지에 저장
+		localStorage.member = memberStr;
+		
+		//초기화
+		num.value = '';
+		name.value = '';
+		addr.value = '';
+	};
+	let load = document.getElementById('load');
+	load.onclick = function(){
+		//저장된 문자열 읽어오기
+		let loadedMemberStr = localStorage.member;
+		
+		//문자열을 객체화
+		let memberObj = $.parseJSON(loadedMemberStr);
+		
+		//객체에 있는 내용 확인
+		alert(memberObj.num + ',' + memberObj.name + ',' + memberObj.addr);
+	};
+};
+</script>
+</head>
+<body>
+번호 <input type="text" id="num"><br>
+이름 <input type="text" id="name"><br>
+주소 <input type="text" id="addr"><br>
+<button id="save">저장</button>
+<button id="load">불러오기</button>
+</body>
+</html>

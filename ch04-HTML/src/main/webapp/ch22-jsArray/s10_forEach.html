@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>forEach</title>
+</head>
+<body>
+<script type="text/javascript">
+	const array = [1,2,3,4,5,6,7,8,9,10];
+	let sum = 0;
+	
+	array.forEach(function(element,index,array){
+		//element : 배열의 요소
+		//index : 배열의 인덱스
+		//array : 현재 참조 중인 배열 객체(자기자신)
+		sum += element; //요소의 합계 구하기
+		//누적되는 과정 확인
+		document.write(index + ':' + element + '->' + sum + '<br>');
+		document.write('=========>array : ' + array + '<br>');
+	});
+	document.write('---------------<br>');
+	document.write('배열 요소의 합계 : ' + sum);
+</script>
+</body>
+</html>

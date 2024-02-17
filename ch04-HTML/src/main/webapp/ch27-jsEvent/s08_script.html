@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스크립트에서 이벤트 연결</title>
+<style type="text/css">
+	div{
+		background-color:yellow;
+	}
+</style>
+<script type="text/javascript">
+//윈도우가 로드될 때 호출
+window.onload = function(){
+	let header = document.getElementById('header');
+	//이벤트 연결
+	     //이벤트 속성=이벤트 핸들러
+	header.onclick=function(){
+		alert('클릭');
+	};
+};
+</script>
+</head>
+<body>
+	<div id="header">클릭</div>
+</body>
+</html>

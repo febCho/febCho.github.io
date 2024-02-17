@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery UI</title>
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#datepicker').datepicker({
+		showMonthAfterYear:true,
+		dateFormat:'yy-mm-dd',
+		dayNamesMin:['일','월','화','수','목','금','토'],
+		changeMonth:true,
+		//달을 변경하기 위해 changeMonth:true를 명시하면, 달의 표기를 변경할 때
+		//monthNamesShort를 사용해야 정상 동작함
+		monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		changeYear:true
+	});
+});
+</script>
+</head>
+<body>
+	<p>
+		Date : <input type="text" id="datepicker">
+	</p>
+</body>
+</html>

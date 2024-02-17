@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클래스를 이용한 문서 객체 탐색</title>
+<script type="text/javascript">
+window.onload = function(){
+	let foo = document.getElementsByClassName('matched');
+	
+	let output = '[class명이 matched인 모든 태그의 text 출력]\n';
+	for(let i=0;i<foo.length;i++){
+		output += foo[i].innerHTML + '\n';
+	}
+	alert(output);
+	
+	let foo2 = document.getElementById('foo');
+	let fooMatched = foo2.getElementsByClassName('matched');
+	
+	let output2 = '[id이 foo인 태그의 하위 태그 중 class명이 matched인 모든 태그의 text 출력]\n';
+	for(let i=0;i<fooMatched.length;i++){
+		output2 += fooMatched[i].innerHTML +'\n';
+	}
+	alert(output2);
+	
+	//클래스명이 여러 개인 경우 공백을 구분자로해서 문자열로 전달
+	//순서는 바꾸어도 됨
+	let fooMatched2 = foo2.getElementsByClassName('matched unmatched');
+	
+	let output3 = '[id가 foo인 태그의 하위 태그 중 class명이 matched unmatched인 모든 태그의 text 출력]\n';
+	
+	for(let i=0;i<fooMatched2.length;i++){
+		output3 += fooMatched2[i].innerHTML + '\n';
+	}
+	alert(output3);
+};
+</script>
+</head>
+<body>
+<p id="foo">
+	<span class="matched">a</span>
+	<span class="matched unmatched">b</span>
+	<span class="unmatched">c</span>
+</p>
+<p id="bar">
+	<span class="matched">x</span>
+</p>
+</body>
+</html>

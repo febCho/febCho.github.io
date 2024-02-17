@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서 객체의 innerHTML 속성 사용</title>
+<script type="text/javascript">
+window.onload = function(){
+	let output = '';
+	output += '<ul>';
+	output += '<li>JavaScript</li>';
+	output += '<li>jQuery</li>';
+	output += '<li>Bootstrap</li>';
+	output += '</ul>';
+	
+	//innerHTML에 문자열로 작성된 태그를 할당
+	document.body.innerHTML = output;//HTML 태그 생성
+	
+	//document.body.textContent = output;//텍스트로만 처리
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>할 일 목록(TodoList)</title>
+<link rel="stylesheet" href="https:unpkg.com/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<style type="text/css">
+body{
+	margin:0;
+	padding:0;
+	font-family:sans-serif;
+}
+.title{
+	text-align:center;
+	font-weight:bold;
+	font-size:20pt;
+}
+.todo-done{
+	text-decoration:line-through;
+}
+.container{
+	padding:10px;
+}
+.pointer{
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="card card-body bg-light">
+		<div class="title">할 일 목록(TodoList)</div>
+	</div>
+	<div class="card card-default">
+		<div class="card-body">
+			<div class="ol">
+				<div class="input-group">
+					<input type="text" class="form-control"
+						name="msg" placeholder="할 일을 여기에 입력!"
+						id="todo">
+					<span class="btn btn-primary input-group-addon"
+						id="add_btn">추가</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<ul class="list-group" id="list"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	let ts = new Date().getTime();//유일한 식별값을 사용하기 위해서 숫자로 된
+	                              //날짜값을 사용하고자 Date 객체 생성 후 바로 메서드 호출
+	//초기 데이터 배열 생성
+	const todoList = [//{} 단위로 데이터베이스의 하나의 행, id가 pk 역할을 한다고 생각
+		{id:ts,todo:"병원 다녀오기", completed:true},
+		{id:ts+1,todo:"영화 보기", completed:false},
+		{id:ts+2,todo:"분리수거 하기", completed:false},
+		{id:ts+3,todo:"일기 쓰기", completed:false}
+	];
+	
+	//목록 처리 - 여러 번 호출 예정이라 함수로 작업
+	function selectList(){
+		//목록을 표시하기 위해 ul을 호출
+		let listGroup = document.getElementById('list');
+		listGroup.innerHTML = '';//초기화
+		
+		//목록 표시 = 배열 데이터 읽어오기
+		todoList.forEach(function(element,index,array){//<li> 태그를 만드는 과정
+			let output = '';
+			if(element.completed){//객체 = element의 completed가 true면 = 할 일 체크가 true
+				output += '<li class="list-group-item list-group-item-success">';  //작은 따옴표 = 문자열, 큰 따옴표 = HTML에서의 속성값
+				output += '<span class="pointer todo-done check-btn" id="' + element.id + '">' + element.todo + '(완료)</span>';
+			}else{//할 일 체크가 false이면          //todo-done -> 취소선 스타일 지정이 되어 있음
+				output += '<li class="list-group-item">';
+				output += '<span class="pointer check-btn" id="' + element.id + '">' + element.todo + '</span>';
+			}//삭제 버튼을 누르면 배열에서 뺄 예정
+			output += '<span class="float-end badge bg-secondary pointer delete-btn" id="' + element.id + '">삭제</span>';
+			output += '</li>';//if문에 따라 true/false 둘 중 하나가 되어 output에 누적될 테니 li 닫는 태그는 하나만
+			listGroup.innerHTML += output;
+		});
+		
+		//삭제 이벤트 연결                          //삭제 버튼 span 태그 class
+		let delete_btn = document.getElementsByClassName('delete-btn');
+		for(let i=0;i<delete_btn.length;i++){//삭제 버튼이 목록마다 있음
+			delete_btn[i].onclick = function(){
+				//이벤트가 발생한 태그의 id 반환
+				let id = this.id;//클릭 이벤트가 발생한 태그의 id
+				//삭제하고자 하는 아이템의 id가 있는 todoList 배열의 객체를 구하고
+				//해당 객체의 배열의 인덱스를 반환
+				let index = todoList.findIndex((item)=> id == item.id);
+				//해당 객체 삭제
+				todoList.splice(index,1);
+				selectList();//배열에서 객체가 삭제되었기 때문에 목록을 새로 호출
+			};
+		}//end of for
+	
+		//할 일 체크 이벤트 연결                          //삭제 버튼 span 태그 class
+		let check_btn = document.getElementsByClassName('check-btn');
+		for(let i=0;i<check_btn.length;i++){//삭제 버튼이 목록마다 있음
+			check_btn[i].onclick = function(){
+				//이벤트가 발생한 태그의 id 반환
+				let id = this.id;//클릭 이벤트가 발생한 태그의 id
+				//객체를 대조하는 과정도 동일함
+				let index = todoList.findIndex((item)=> id == item.id);
+				//할 일 체크가 true -> false, false -> true로 변경
+				todoList[index].completed = !todoList[index].completed;
+				selectList();//체크 또는 체크를 해제했기 때문에 목록을 새로 호출
+			};
+		}//end of for
+		
+	}//end of selectList
+	
+	//초기 데이터 설정
+	selectList();
+	
+	//엔터 키 이벤트 연결			//input 태그 ID
+	let todo = document.getElementById('todo');
+	todo.onkeydown=function(event){//매개변수로 event 객체를 받고
+		if(event.keyCode == 13){//13이 enter keycode
+			addTodo();
+		}
+	}
+	
+	//추가 버튼 이벤트 연결                 //추가 버튼 span 태그 ID
+	let add_btn = document.getElementById('add_btn');
+	add_btn.onclick = function(){
+		addTodo();
+	};
+	                          
+	//등록 처리 함수
+	function addTodo(){
+		if(todo.value == ''){//입력 창이 비어있다면
+			alert('할 일을 입력하세요!');
+			todo.focus();
+			return;//함수만 빠져나감, sumit이 아니니까
+		}      //todoList 배열의 맨 뒤에 객체를 추가하기 위해 push()
+		//todoList.push({id:new Date().getTime(),todo:todo.value,completed:false});
+		//배열의 맨 앞에 객체 추가        Date 객체로부터 id       입력창의 값   기본은 안 한 걸로
+		todoList.unshift({id:new Date().getTime(),todo:todo.value,completed:false});
+		todo.value = '';//데이터가 배열에 들어갔으니 입력창 초기화
+		
+		selectList();//새로 등록된 데이터를 표시하기 위해 목록을 다시 호출
+	}
+
+</script>
+</body>
+</html>

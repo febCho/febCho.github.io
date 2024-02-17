@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리스트를 활용한 메뉴</title>
+<style type="text/css">
+	ul{
+		list-style:none; /*리스트의 점 아이콘 제거*/
+	}
+	ul li{
+		display:inline; /*리스트를 가로로 배치*/
+	}
+	ul li a{
+		text-decoration:none; /*밑줄 제거*/
+		background-color:#c00;
+		color:#fff;
+			/*
+			a 태그에는 width, height가 적용되지 않았으므로
+			display:inline-block 명시함
+			*/
+			display:inline-block;
+			width:100px;
+			height:30px;
+			/*padding : 태그 안의 여백*/
+			padding-top:3px;
+			padding-left:10px;
+	}
+	ul li a:hover{
+		text-decoration:none;
+		background-color:#336699;
+	}
+</style>
+</head>
+<body>
+<ul>
+	<li><a href='#'>Company</a></li>
+	<li><a href='#'>Product</a></li>
+	<li><a href='#'>Service</a></li>
+	<li><a href='#'>Community</a></li>
+</ul>
+</body>
+</html>

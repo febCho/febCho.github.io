@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>isNaN함수</title>
+</head>
+<body>
+<script type="text/javascript">
+	let number = 10 / 'A';//NaN(Not a Number) 출력
+	document.write('number = ' + number + '<br>');
+	
+	if(number == NaN){//항상 false를 반환하기 때문에 isNaN 함수로 판별
+		document.write('숫자가 아님<br>');
+	}else{
+		document.write('숫자임<br>');
+	}
+	
+	document.write('---------------<br>');
+	
+	//전달되는 인자의 값이 숫자인지 아닌지 판별
+	if(isNaN(number)){
+		document.write('숫자가 아님<br>');
+	}else{
+		document.write('숫자임<br>');
+	}
+</script>
+</body>
+</html>

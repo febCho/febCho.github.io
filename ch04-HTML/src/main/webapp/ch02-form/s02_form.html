@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<h3>폼 하위 태그의 필드 및 속성 사용</h3>
+<form action="do.jsp" method="post">
+	<!-- 
+	fieldset : 폼을 그룹핑하는 역할
+	legend : 제목 지정
+	-->
+	<fieldset>
+		<legend>프로젝트 정보</legend>
+		<ul>
+			<li>
+				<!-- label : 입력 창 앞에 '아이디'나 '비밀번호'처럼
+				붙여 놓은 텍스트를 말함 -->
+				<label for="name">이름</label>
+				<!-- 
+				required : 입력 필수 지정
+				-->
+				<input type="text" name="name" id="name" required autofocus>
+			</li>
+			<li>
+				<!-- range : 슬라이드 막대로 표시하는 숫자 필드 -->
+				<label for="priority">중요도</label>
+				<input type="range" name="priority"
+					   id="priority" min="0" max="10" value="0"
+					   oninput="result.value=parseInt(priority.value)">
+				<!-- output : 계산의 결과를 삽입 -->
+				<output name="result"></output>
+			</li>
+			<li>
+				<!-- number : 숫자 필드 -->
+				<label for="hour">예상 시간</label>
+				<input type="number" name="estimated_hour" id="hour"
+				                     min="0" max="20">
+			</li>
+			<li>
+				<!-- date : 날짜 필드 -->
+				<label for="start_date">시작 날짜</label>
+				<input type="date" name="start_date" id="start_date">
+			</li>
+			<li>
+				<!-- time : 시간 필드 -->
+				<label for="start_time">시작 시간</label>
+				<input type="time" name="start_time" id="start_time">
+			</li>
+			<li>
+				<!-- email : 이메일 필드 -->
+				<label for="email">이메일</label>
+				<input type="email" name="email" id="email">
+			</li>
+			<li>
+				<!-- url : URL 필드 -->
+				<label for="url">URL</label>
+				<input type="url" name="url" id="url">
+			</li>
+			<li>
+				<!-- search : search 필드 -->
+				<label for="search">검색</label>
+				<input type="search" name="search" id="search">
+			</li>
+			<li>
+				<input type="submit" value="전송">
+			</li>
+		</ul>
+	</fieldset>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date</title>
+<script type="text/javascript">
+//윈도우가 로드될 때 호출
+window.onload = function(){
+	//일정 시간마다 매개변수로 전달된 함수를 반복해서 실행
+	setInterval(function(){
+		const time = new Date();
+		let hours = time.getHours();
+		let minutes = time.getMinutes();
+		let seconds = time.getSeconds();
+		
+		let clock = '';
+		clock += ((hours < 10) ? '0' : '') + hours;
+		clock += ((minutes < 10) ? ':0' : ':') + minutes;
+		clock += ((seconds < 10) ? ':0' : ':') + seconds;
+		
+		//span을 호출해서 시간을 span태그의 내용으로 표시
+		document.getElementById('display').innerHTML = clock;
+		
+	},1000);////시계기 때문에 1초 단위로
+};
+</script>
+</head>
+<body>
+	<span id="display"></span>
+</body>
+</html>

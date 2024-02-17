@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>갤러리</title>
+<style type="text/css">
+*{
+	margin:0;
+	padding:0;
+}
+#galleryWrap{
+	width:520px;
+	margin:0 auto;
+	text-align:center;
+}
+#galleryWrap img{
+	vertical-align:middle;
+}
+img#prev, img#next{
+	cursor:pointer;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	let num = 1;
+	let gallery = document.getElementById('gallery');
+	//이벤트 연결
+	document.getElementById('prev').onclick = function(){
+		num--;
+		if(num < 1) num=7;//num이 음수가 되지 않도록 1보다 작아지면 7로 되게
+		gallery.src = '../files/img' + num + '.jpg';
+	};
+	document.getElementById('next').onclick = function(){
+		num++;
+		if(num > 7) num=1;//이미지가 7까지만 있기 때문에 8로 가서 에러 안 나게 다시 1로
+		gallery.src = '../files/img' + num + '.jpg';//이미지 경로를 동적으로 바꾸게 함
+	};
+};
+</script>
+</head>
+<body>
+<div id="galleryWrap">
+	<h1>이미지 넘기기</h1>
+	<p>
+		<img src="../files/left_btn.png" alt="이전 그림 보기" id="prev">
+		<img src="../files/img1.jpg" alt="갤러리 그림" id="gallery">
+		<img src="../files/right_btn.png" alt="다음 그림 보기" id="next">
+	</p>
+</div>
+</body>
+</html>

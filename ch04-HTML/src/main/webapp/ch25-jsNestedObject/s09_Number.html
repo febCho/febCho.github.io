@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>toFixed(),toLocaleString()</title>
+</head>
+<body>
+<script type="text/javascript">
+document.write('반올림(자리수 지정)<br>');
+
+let newNum = 12254.437;
+document.write('소수점 셋째자리에서 반올림 : ' + newNum.toFixed(2) + '<br>');
+
+let number = 1234567;
+document.write('number = ' + number.toLocaleString() + '<br>');
+
+let number2 = 1234567.4938389;//디폴트 소수점 3자리 표시(넷째 자리에서 반올림)
+document.write('number2 = ' + number2.toLocaleString() + '<br>');
+//지정된 지역에서 사용하는 숫자의 표현 방식으로 문자열로 반환
+document.write('number2 = '             //localse, 옵션
+		       + number2.toLocaleString(undefined,{maximumFractionDigits:5}));
+</script>
+</body>
+</html>

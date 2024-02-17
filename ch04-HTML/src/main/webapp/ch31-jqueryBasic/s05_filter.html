@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+$(document).ready(function(){
+/*
+입력 양식 필터 선택자
+선택자 형태            설명
+요소:checked         체크된 입력 양식
+요소:disabled        비활성화된 입력 양식
+요소:enabled         활성화된 입력 양식
+요소:focus           초점이 맞춰져 있는 입력 양식
+요소:selected        select 태그에서 option 객체 중 선택된 태그
+ */
+	                  //속성 제어
+	$('input:checked').attr('checked',false);
+	                  //속성 값 변경
+	$('input:disabled').val('클릭할 수 없음');
+	$('input[type=button]:enabled').val('클릭할 수 있음');
+});
+</script>
+</head>
+<body>
+	<input type="checkbox" name="city" value="서울" checked>서울
+	<input type="button" value="확인" disabled>
+	<input type="button" value="확인">
+</body>
+</html>

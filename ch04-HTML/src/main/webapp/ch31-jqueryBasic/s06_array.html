@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});
+$(function(){
+	//배열 생성
+	const array = [
+		{name:'naver',link:'https://www.naver.com'},//객체
+		{name:'daum',link:'https://www.daum.net'},
+		{name:'google',link:'https://www.google.co.kr'},
+		{name:'nate',link:'https://www.nate.com'}
+	];
+	//      배열   배열로부터 데이터를 받아서 처리하는 함수
+	$.each(array,function(index,item){
+		//index : 배열의 인덱스
+		//item : 배열의 index를 통해 접근한 객체 {key:value}
+		
+		let output = '';
+		output += '<h1>';
+		output += '<a href="' + item.link + '">' + item.name + '</a>';
+		output += '</h1>';
+		
+		document.body.innerHTML += output;
+	});
+});
+</script>
+</head>
+<body>
+	
+</body>
+</html>

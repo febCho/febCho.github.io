@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예외처리</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+예외처리를 하지 않을 경우 예외(오류)가 발생하면 프로그램이 중단됨.
+예외처리를 했을 경우 예외(오류) 발생 시 프로그램 중단 없이 프로그램 실행될 수 있도록 처리
+ */
+	document.write('예외가 발생하지 않은 경우<br>');
+	try{
+		document.write('1<br>');
+		document.write('2<br>');
+	}catch(exception){
+		document.write('3<br>');
+		console.log(exception);
+	}
+	document.write('프로그램 종료!!<br>');
+	document.write('---------------------<br>');
+	
+	document.write('예외가 발생하는 경우<br>');
+	try{
+		document.write('1<br>');
+		document.write(num);//예외 발생
+		document.write('2<br>');
+	}catch(exception){
+		document.write('3<br>');
+		console.log(exception);
+	}
+	document.write('프로그램 종료!!');
+</script>
+</body>
+</html>

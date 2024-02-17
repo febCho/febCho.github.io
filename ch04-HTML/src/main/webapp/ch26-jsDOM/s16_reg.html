@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규표현식</title>
+<script type="text/javascript">
+/*
+정규표현식(regular expression)은 일정한 패턴을 가진 문자열의 집합을 표현하기 위해
+사용하는 형식 언어(formal language)이다.
+ */
+window.onload = function(){
+	//이벤트 연결
+	document.getElementById('register_form').onsubmit = function(){
+		let phone = document.getElementById('phone');
+		/*
+		/패턴/ -> /(시작) 패턴 /(끝)
+		^ 패턴의 시작
+		\d 숫자
+		{3} 3번 반복
+		$ 패턴의 끝
+		*/
+		//text(문자열) : 정규 표현식이 매개변수로 전달된 문자열과 패턴 일치하면 true,
+		//             불일치하면 false를 반환하는 메서드
+		if(!/^\d{3}-\d{4}-\d{4}$/.test(phone.value)){
+			alert('000-0000-0000 형식으로 입력하세요');
+			phone.value = '';
+			phone.focus();
+			return false;//submit이니까
+		}
+	};
+};
+</script>
+</head>
+<body>
+<form id="register_form" action="a.jsp" method="post">
+	<ul>
+		<li>
+			<label for="phone">휴대폰</label>
+			<input type="text" name="phone" id="phone">
+			(000-000-0000 형식으로 입력)
+		</li>
+	</ul>
+	<div>
+		<input type="submit" value="전송">
+	</div>
+</form>
+</body>
+</html>

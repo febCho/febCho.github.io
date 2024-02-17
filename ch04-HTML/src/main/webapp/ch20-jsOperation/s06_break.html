@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>break</title>
+</head>
+<body>
+<script type="text/javascript">
+	for(var i = 0;i < 5;i++){
+		for(var j = 0;j < 5;j++){
+			if(j == 3){
+				break;//break에 포함된 for문만 빠져나감
+			}
+			document.write(i + ', ' + j + '<br>');
+		}
+	}
+	
+	document.write('---------------------------<br>');
+	//break label문을 사용해서 원하는 반복문 빠져나가기
+	outer_loop:
+	for(var i = 0;i < 5;i++){
+		for(var j = 0;j < 5;j++){
+			if(j == 3){
+				break outer_loop;
+			}
+			document.write(i + ', ' + j + '<br>');
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>div</title>
+<style type="text/css">
+	div.a{
+		width:500px;
+		height:100px;
+		border:1px solid orange;
+		text-align:center; /*가로 방향 정렬*/
+		vertical-align:middle; /*세로 방향 정렬*/
+		/*div에서 vertical-align이 적용되지 않기 때문에 table 구조로 변경*/
+		display:table-cell;
+	}
+	
+	div.b{
+		width:500px;
+		height:100px;
+		border:1px solid orange;
+		display:flex;
+		align-items:center; /*세로 정렬*/
+		justify-content:center; /*가로 정렬*/
+	}
+</style>
+</head>
+<body>
+<div class="a"><span>하하</span></div>
+<div class="b"><span>호호</span></div>
+</body>
+</html>

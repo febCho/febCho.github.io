@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규표현식</title>
+<script type="text/javascript">
+window.onload = function(){
+	//이벤트 연결
+	document.getElementById('register_form').onsubmit = function(){
+		let phone2 = document.getElementById('phone2');
+		/*
+		/패턴/ -> /(시작) 패턴 /(끝)
+		^ 패턴의 시작
+		[] '[' 와 ']' 사이의 문자(문자, 숫자, 특수문자)들과 매치한다는 의미
+		[]안의 문자 사이에 하이픈(-)을 사용하게 되면 두 문자 사이의 범위(From - to)와 같은 의미
+		[0-9] '['와 ']' 사이의 문자들과 매치라는 의미 -> [0123456789]와 같은 의미
+		{11} 11번 반복
+		$ 패턴의 끝
+		*/
+		//test보다 느림, 일치하면 검색 데이터를 반환, 불일치하면 null을 반환
+		if(!phone2.value.match(/^[0-9]{11}$/)){
+			alert('11자리 숫자만 입력 가능');
+			phone2.value = '';
+			phone2.focus();
+			return false;
+		}
+		
+	};
+};
+</script>
+</head>
+<body>
+<form id="register_form" action="a.jsp" method="post">
+	<ul>
+		<li>
+			<label for="phone2">휴대폰</label>
+			<input type="text" name="phone2" id="phone2">(- 없이 입력)
+		</li>
+	</ul>
+	<div>
+		<input type="submit" value="전송">
+	</div>
+</form>
+</body>
+</html>

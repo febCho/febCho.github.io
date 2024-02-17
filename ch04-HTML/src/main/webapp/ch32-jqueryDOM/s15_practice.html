@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery</title>
+<!-- CDN[Contents Delivery Network] 방식 : URL을 통해 js 파일 연결 -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//문서가 준비 완료되면 매개변수로 전달된 함수를 실행하라는 의미로
+//= $(document).ready(function(){});	
+$(function(){
+/*
+[실습]
+도서 정보를 table에 표시
+예)
+도서명   분류   정상가격   할인가격(5%)
+자바     IT   20000    19000
+미술사   예술   30000    28500
+노래연습  예술   10000    9500
+ */
+	//배열 생성
+	const book = [
+		{name:'자바',category:'IT',price:20000},
+		{name:'미술사',category:'예술',price:30000},
+		{name:'노래연습',category:'예술',price:10000},
+		{name:'한국사',category:'역사',price:50000}
+	];
+	
+	let output = '<tr><th>도서명</th><th>분류</th><th>정상가</th><th>할인가(5%)</th></tr>';
+	
+	$.each(book,function(index,item){
+		output += '<tr>';
+		output += '<td>' + item.name + '</td>';
+		output += '<td>' + item.category + '</td>';
+		output += '<td>' + item.price.toLocaleString() + '</td>';
+		output += '<td>' + (item.price * 0.95).toLocaleString() + '</td>';
+		output += '</tr>';
+	});
+	
+	$('#output').append(output);
+});       
+</script>
+</head>
+<body>
+	<table id="output" border="1"></table>	
+</body>
+</html>

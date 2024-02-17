@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery UI</title>
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#dialog').dialog({
+		autoOpen:false,//수동으로 다이얼로그 열기
+		show:{
+			effect:'blind',
+			duration:1000
+		},
+		hide:{
+			effect:'explode',
+			duration:1000
+		}
+	});
+	
+	//버튼 이벤트 연결
+	$('#opener').click(function(){
+		$('#dialog').dialog('open');
+	})
+});
+</script>
+</head>
+<body>
+	<div id="dialog" title="Basic dialog">
+		<p>화면에 마치 윈도우 창처럼 보여지는 요소로 
+		현재 화면을 벗어날 수 없지만 화면 내에서는 이동이 가능함</p>
+	</div>
+	
+	<button id="opener">Open Dialog</button>
+</body>
+</html>

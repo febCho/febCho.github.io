@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>toString() 메서드 사용</title>
+</head>
+<body>
+<script type="text/javascript">
+	const student = {};
+	
+	document.write(student + '<br>');
+	document.write(student.toString() + '<br>');
+	document.write('--------------------<br>');
+	
+	//객체에 속성 추가
+	student.이름 = '홍길동',
+	student.취미 = '악기',
+	student.특기 = '프로그래밍',
+	student.장래희망 = '프로그래머';
+	
+	for(let key in student){
+		document.write(key + ' : ' + student[key] + '<br>');
+	}
+	document.write('------------------<br>');
+	
+	//객체에 메서드 추가
+	student.toString = function(){
+		let msg = '';
+		for(let key in this){//this : 객체 안에서 객체 자신 참조 
+			if(key != 'toString'){
+				msg += key + ' : ' + this[key] + '<br>';
+			}
+		}
+		return msg;
+	};
+	
+	document.write(student.toString());
+	document.write('------------------<br>');
+	document.write(student);
+</script>
+</body>
+</html>

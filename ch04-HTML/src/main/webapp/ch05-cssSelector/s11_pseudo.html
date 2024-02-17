@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상태 가상클래스 선택자</title>
+<style type="text/css">
+/*
+선택자형태       설명
+:checked     체크 상태의 input 태그를 선택
+:focus       초점이 맞추어진 input 태그를 선택
+:enabled     사용 가능한 input 태그를 선택
+:disabled    사용 불가능한 input 태그를 선택
+*/
+
+/*input 태그가 사용 가능할 경우에*/
+input:enabled {background-color:yellow;}
+
+/*input 태그가 사용 불가능할 경우에*/
+input:disabled {background-color:gray;}
+
+/*input 태그에 초점이 맞춰진 경우에*/
+input:focus {background-color:orange;}
+
+input[type=checkbox]:checked + div{
+	height:0px;
+}
+
+div{
+	width:300px;
+	height:100px;
+	overflow : hidden; /*지정한 넓이와 높이를 벗어난 데이터는 숨김*/
+	transition-duration : 1s; /*변환 효과 적용*/
+}
+
+</style>
+</head>
+<body>
+	<h2>Enabled</h2>
+	<input type="text">
+	<h2>Disabled</h2>
+	<input type="text" disabled="disabled">
+	
+	<br><br>
+	<input type="checkbox">
+	<div>
+		체크박스에 체크하면 내용이 서서히 사라짐
+		체크박스에 체크하면 내용이 서서히 사라짐
+		체크박스에 체크하면 내용이 서서히 사라짐
+		체크박스에 체크하면 내용이 서서히 사라짐
+		체크박스에 체크하면 내용이 서서히 사라짐
+	</div>
+</body>
+</html>

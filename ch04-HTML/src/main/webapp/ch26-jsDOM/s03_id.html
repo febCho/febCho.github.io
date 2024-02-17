@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>id를 이용한 문서 객체 탐색</title>
+<script type="text/javascript">
+window.onload = function(){
+	let header1 = document.getElementById('header_1');
+	let header2 = document.getElementById('header_2');
+	
+	header1.innerHTML = '하하';
+	header2.innerHTML = '호호';
+};
+</script>
+</head>
+<body>
+	<h1 id="header_1">Header</h1>
+	<h1 id="header_2">Header</h1>
+</body>
+</html>

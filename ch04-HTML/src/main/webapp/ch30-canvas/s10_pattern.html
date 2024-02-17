@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas</title>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		
+		let img = new Image();
+		img.src = '../files/pattern.png';
+		img.onload = function(){
+			//이미지 반복 지정(repeat, repeat-x, repeat-y, no-repeat)
+			let pttn = context.createPattern(img,'repeat');
+			context.fillStyle = pttn;
+			context.fillRect(0,0,300,500);
+		};
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+</body>
+</html>

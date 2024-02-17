@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열에 객체 저장</title>
+</head>
+<body>
+<script type="text/javascript">
+	//빈 배열 정의
+	const students = [];
+	
+	//객체를 배열에 저장
+	students.push({이름:'홍길동',국어:99,영어:98,수학:97,과학:96});
+	students.push({이름:'박문수',국어:50,영어:98,수학:80,과학:96});
+	students.push({이름:'장영실',국어:99,영어:100,수학:97,과학:85});
+	students.push({이름:'김유신',국어:100,영어:98,수학:67,과학:96});
+	students.push({이름:'이순신',국어:99,영어:90,수학:97,과학:60});
+	
+	//students 배열 내 모든 객체에 메서드 추가
+	for(let i in students){
+		//총점 구하는 메서드 추가
+		students[i].getSum = function(){
+			return this.국어 + this.영어 + this.수학 + this.과학;
+		};
+		//평균 구하는 메서드 추가
+		students[i].getAverage = function(){
+			return this.getSum()/4;
+		};
+	}
+	
+	document.write('이름, 총점, 평균<br>');
+	document.write('-------------------<br>');
+	
+	for(let i in students){
+		document.write(students[i].이름 + ', ' + students[i].getSum()
+				+ ', ' + students[i].getAverage() + '<br>');
+	}
+</script>
+</body>
+</html>

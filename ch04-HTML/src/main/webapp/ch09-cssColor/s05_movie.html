@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[실습] 영화 홍보 페이지 만들기</title>
+<style type="text/css">
+	@font-face{
+		font-family:'옛날사진관';
+		src:url('../files/a옛날사진관5.ttf') format('truetype');	
+	}
+		@font-face{
+		font-family:'옛날사진관_thin';
+		src:url('../files/a옛날사진관3.ttf') format('truetype');	
+	}
+	@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+	.title{
+		font-family:'Black Han Sans', serif;
+		font-size:60pt;
+	}
+	.p1{
+		font-family:'SUIT-Regular', serif;
+		color:#454544;
+		font-size:20pt;
+	}
+	ul{
+		list-style:none;
+	}
+	ul#menu li{
+		display:inline;
+	}
+	ul#menu li a{
+		text-decoration:none;
+		background-color:#c00;
+		color:#fff;
+		display:inline-blck;
+		width:150px;
+		height:80px;
+		padding-top:2px;
+		padding-left:9px;
+		padding-right:6px;
+	}
+	ul#menu li a:hover{
+		text-decoration:none;
+		background-color:#fff;
+		color:#c00;
+		font-weight:bold;
+	}
+	
+	.index{
+		font-family:'옛날사진관', sans-serif;
+		color:#1b1f7d;
+		font-size:35pt;
+	}
+	.gv{
+		font-family:'옛날사진관_thin', sans-serif;
+		color:#454544;
+		font-size:15pt;
+	}
+	.main{
+		font-family:'옛날사진관', sans-serif;
+		color:#454544;
+		font-size:20pt;
+	}
+	fieldset{
+		width:800px;
+		margin:auto;
+	}
+	#guide{
+		font-size:10pt;
+	}
+	#purchase{
+		width:450px;
+		height:80px;
+		background-color:#1b1f7d;
+		font-size:30pt;
+		font-family:'옛날사진관', sans-serif;
+		color:white;
+		padding-top:20pt;
+		margin:auto;
+	}
+	a[title="purchase"]{
+		text-decoration:none;
+		color:white;
+	}
+</style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Hi+Melody&display=swap');
+</style>
+
+</head>
+<body bgcolor="#e8e9eb">
+<div align="right">
+	<ul id="menu">
+		<li><a href="#">간편 로그인</a></li>
+		<li><a href="#">예매하기</a></li>
+		<li><a href="#">MY 예매</a></li>
+	</ul>
+</div>
+<p align="center" class="title">에브리씽<br>에브리웨어<br>올앳원스</p>
+<p align="center"><img src="../files/rock.png" width="150px">
+<p align="center" class="index">
+	에에올 1주년 돌잔치 특별상영 GV
+</p>
+<hr size = "1" width = "80%" color="#a19e9d">
+<br><br>
+<p align="center"><img src="../files/poster1.jpg" width="500px"></p>
+<br><br><br><br>
+<p align="center" class="p1">
+	"미친 듯한 상상력으로 그 모든 세계를 종횡무진 경유한 끝에 찡한 골든벨을 울린다."
+	<br>(<b>평론가 이동진</b> | ★★★★★)
+</p>
+<br><br><br>
+<p align="center" class="p1">
+	제80회 골든 글로브 2관왕<br>
+	제95회 아카데미 시상식 7관왕 등<br>
+	총 <b>158관왕</b> 달성
+</p>
+<br><br><br>
+<p align="center" class="p1">
+	역주행 열풍을 일으킨 에에올이 1주년을 맞아<br>
+	<b>한국 눈알단을 위한 특별 GV</b>로 돌아왔다!
+</p>
+<br><br><br><br>
+<div align="center">
+	<span class="index">영화 정보</span>
+	<hr size = "3" width="20%" color="#1b1f7d">
+	<br><br>
+	<table border="1">
+		<tr bgcolor="#1b1f7d">
+			<th colspan="4" height="60px" style="color:white">
+				에브리씽 에브리웨어 올 앳 원스<br>
+				<small>Everything Everywhere All at Once</small>
+			</th>
+		</tr>
+		<tr bgcolor="white">
+			<th width="100px" height="30px">개봉일자</th>
+			<td width="150px" align="center">2022.10.12</td>
+			<th width="100px" style="color:red"><b>GV 진행일자</b></th>
+			<td width="150px" align="center">2023.10.20</td>
+		</tr>
+		<tr bgcolor="white">
+			<th>장소</th>
+			<td colspan="3" align="center" height="30px">
+				메가박스 코엑스 Dolby Cinema
+			</td>
+		</tr>
+		<tr bgcolor="white">
+			<th>등급</th>
+			<td align="center" height="30px">15세이상관람가</td>
+			<th>러닝타임</th>
+			<td align="center">139분</td>
+		</tr>
+	</table>
+	<br><br><br><br>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/wxN1T1uxQ2g?si=uuYiZutxOw3iPL6V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<br><br><br><br>
+<div align="center">
+	<span class="index">출연</span>
+	<hr size = "3" width="20%" color="#1b1f7d">
+	<br><br>
+	<table>
+		<tr>
+			<td><img src="../files/ch1.jpg" width="200"></td>
+			<td><img src="../files/ch2.jpg" width="200"></td>
+			<td><img src="../files/ch3.jpg" width="200"></td>
+			<td><img src="../files/ch4.jpg" width="200"></td>
+		</tr>
+		<tr>
+			<th width="200">양자경</th>
+			<th width="200">스테파니 수</th>
+			<th width="200">키호이콴</th>
+			<th width="200">제이미 리 커티스</th>
+		</tr>
+	</table>
+</div>
+<br><br><br><br>
+<div align="center">
+	<span class="index">GV 진행 및 참석</span>
+	<hr size = "3" width="20%" color="#1b1f7d">
+	<br><br>
+	<p class="gv">
+		다니엘 콴 (감독/각본)<br>
+		다니엘 샤이너트 (감독/각본)<br>
+		<br>그리고<br><br>
+	</p>
+	<div class="main">
+		양자경
+	</div>
+	<span class="gv"><small><br>(통역: 샤론 최, 진행: 이동진)</small></span>
+	<br><br>
+</div>
+<br>
+<div align="center">
+	<p id="guide">
+		영화 종료 후, 약 1시간 동안 관객과의 대화가 진행됩니다.<br>
+		본 행사는 각종 할인 및 쿠폰, 관람권 사용이 불가합니다.<br>
+		본 행사는 당일 취소 및 변경이 불가하며, 예매 취소는 전날 23:59 까지 가능합니다.<br>
+		본 행사는 사정에 의해 변경, 취소 될 수 있습니다.<br>
+	</p>
+</div>
+<br><br><br><br><br>
+<div align="center" id="purchase">
+	<a href="#" title="purchase">GV 회차 예매하기</a>
+</div>
+<br><br><br><br><br>
+<div align="center">
+	<span class="index">기대평 이벤트</span>
+	<hr size = "3" width="20%" color="#1b1f7d">
+</div>
+<br><br>
+<form action="event.jsp" method="post">
+		<fieldset>
+			<legend>기대평 이벤트 응모하고 GV 가자!</legend>
+			<ul>
+				<li>
+					<label for="name">이름</label>
+					<input type="text" name="name" id="name" required>
+				</li>
+				<li>
+					<label for="phone">번호</label>
+					<input type="text" name="phone" id="phone" required>
+				</li>
+				<li>
+					<label for="email">메일</label>
+					<input type="email" name="email" id="email">
+				</li>
+				<li>
+					<label>기대평</label>
+				</li>
+				<li>
+					<textarea rows="5" cols="50" name="content"></textarea>
+				</li>
+				<li>
+					<input type="checkbox" name="agree" value="agree" required>
+					이벤트 진행 및 마케팅 활용을 위한 정보 제공에 동의합니다.
+				</li>
+				<li>
+					<input type="submit" value="전송">
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+</body>
+</html>

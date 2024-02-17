@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>change 이벤트</title>
+<script type="text/javascript">
+	function trans(){
+		let x = document.getElementById('word');
+		x.value = x.value.toUpperCase();
+	}
+</script>
+</head>
+<body>
+	영어단어 : <input type="text" id="word" onchange="trans()">
+	<p>입력 필드를 벗어나면 대문자로 변경됩니다.</p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>file</title>
+<script type="text/javascript">
+window.onload = function(){
+	//이벤트 연결
+	document.getElementById('file').onchange = function(){
+		let file = this.files[0];
+		//파일의 정보 취득. 취득한 정보 중 파일명 출력
+		alert(file.name + '을 선택했습니다.');
+	};
+	
+	//읽기 버튼을 클릭할 때
+	document.getElementById('btnStart').onclick = function(){
+		readProcess();
+	};
+};
+//파일의 정보 제공
+function readProcess(){
+	//선택한 파일에 대한 정보 읽기
+	let file = document.getElementById('file').files[0];
+	if(!file){//데이터를 못 읽어와서 false가 된다면(=if(files == undefined))
+		alert('파일을 선택하세요');
+		return;//함수를 빠져나가게 함
+	}
+	
+	document.getElementById('filename').textContent = file.name;
+	document.getElementById('filesize').textContent = '('+file.size+'bytes)';
+	document.getElementById('filetype').textContent = file.type;
+	document.getElementById('filedate').textContent = file.lastModifiedDate.toLocaleString();
+	
+	let encodeList = document.getElementById('encoding');
+	let encoding = encodeList.value;//선택한 값 읽어옴
+	
+	//파일 읽기 작업
+	let reader = new FileReader();
+	reader.readAsText(file,encoding);//선택한 파일, 인코딩 방식을 읽어서 맞는 문자열로 저장
+	reader.onload = function(){
+		let disp = document.getElementById('contents');
+		disp.value = reader.result;//읽어들인 내용 반환
+	};
+	reader.onerror = function(){
+		alert('에러 발생');
+	};
+};
+</script>
+</head>
+<body>
+<h2>현재 시스템의 파일 읽기</h2>
+<input type="file" id="file" accept="text/*">
+<select id="encoding">
+	<option>EUC-KR</option>
+	<option>UTF-8</option>
+</select>
+<button id='btnStart'>읽기</button>
+<br>
+<div>
+	<span id="filename">파일명</span>
+	<span id="filesize">파일크기</span>
+	<span id="filetype">파일타입</span>
+	<span id="filedate">파일의 마지막 갱신 일시</span>
+</div>
+<textarea rows="10" cols="50" id="contents" readonly="readonly"></textarea>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지역변수와 전역변수</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	1. 지역변수(함수 레벨 스코프)
+	함수 안에서 var를 사용해서 선언한 변수, 함수가 끝나면 소멸
+	
+	2. 전역변수
+	함수 밖에서 만들어진 모든 변수
+	함수 안에서 var 없이 만들어진 변수
+	함수가 끝나도 메모리에 남아 있음
+	*/
+	function text1(){
+		var i=10;//지역변수
+		document.write(i + '<br>');
+	}
+	text1();
+	
+	//지역변수는 함수가 종료되면 소멸되기 때문에 함수 밖에서 호출 불가능
+	//document.write(i + '<br>');
+	
+	var j;//전역변수
+	function text2(){
+		j = 200;
+		document.write(j + '<br>');
+	}
+	text2();
+	
+	function text3(){
+		document.write(j + '<br>');
+	}
+	
+	text3();//선언은 text2() 함수 전에서 하고, 이미 사용 후
+	        //text2 함수 블럭이 끝났는데도 소멸되지 않고 살아남아
+	        //text3() 함수에서 재사용이 가능한 점 확인
+	
+	//전역변수
+	a = 100;
+	function text4(){
+		document.write(a + '<br>');
+	}
+	text4();
+	
+	document.write('a = ' + a + '<br>');
+	
+	//함수 내에서 var를 명시하지 않고 변수를 선언하면 전역변수
+	function text5(){
+		m = 300;
+		document.write(m + '<br>');
+	}
+	text5();
+	
+	function text6(){
+		document.write(m + '<br>');
+	}
+	text6();//선언은 text5() 함수 안에서 var 없이 해서 전역,
+	        //이미 해당 함수 블럭이 끝났음에도 소멸되지 않고
+	        //text6() 함수에서 재사용이 가능한 점 확인
+	
+	document.write('----------------------<br>');
+	//주의
+	//함수 레벨 스코프에서는 제어문 블럭 안에 선언된 변수가 제어문을 벗어나도 소멸되지 않음
+	for(var i=0;i<=9;i++){
+		document.write(i + "");
+	}
+	document.write('<br>');
+	document.write(i);//제어문은 함수가 아니므로 함수 레벨 스코프(var)에서
+	                  //제어문 안에서 선언된 변수는 블럭이 끝나도 재사용 가능
+</script>
+</body>
+</html>

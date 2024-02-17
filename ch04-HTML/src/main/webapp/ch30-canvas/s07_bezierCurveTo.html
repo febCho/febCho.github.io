@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스</title>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		
+		context.beginPath();
+		context.moveTo(50,200);//시작점
+		//(90,50), (310,50)을 조절점으로 하여 현재 위치(50,200)에서 (350,200)까지 곡선을 그림
+		context.bezierCurveTo(90,50,310,50,350,200);
+		
+		context.stroke();
+		
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="220"></canvas>
+	<br><br>
+	<img src="../files/exp_02.gif">
+</body>
+</html>

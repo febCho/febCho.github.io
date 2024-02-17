@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화살표 함수</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+ES6에서 도입된 화살표 함수(arrow function)은 function 키워드 대신
+화살표(fat arrow =>)를 사용해 좀 더 간략한 방법으로 함수를 선언할 수 있다.
+화살표 함수는 익명 함수로 정의한다.
+ */
+let print = (x)=>{
+	document.write(x);
+};
+print(10);
+document.write('<br>-----------------<br>');
+
+let print2 = (x)=>{
+	return x + 10;
+};
+document.write(print2(20));
+document.write('<br>-----------------<br>');
+
+//인자가 하나일 경우 () 생략 가능
+let print3 = x=>{
+	return x * 10;
+};
+document.write(print3(30));
+document.write('<br>-----------------<br>');
+
+let multi =(x,y)=>{return x * y;};
+document.write(multi(3,6));
+document.write('<br>-----------------<br>');
+
+//중괄호를 생략하고 아래와 같이 명시하면 (x,y)=>{return x+y;}와 같이 동작함
+let add = (x,y)=>x+y;
+document.write(add(2,5));
+
+//{}를 생략할 수 없음. 만약 중괄호를 생략하면
+//{return let x = 10;}로 인식하기 때문에 에러 발생
+let print4 = () => {let x = 10;}
+
+</script>
+</body>
+</html>

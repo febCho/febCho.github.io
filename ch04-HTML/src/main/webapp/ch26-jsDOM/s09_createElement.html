@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>createElement</title>
+<script type="text/javascript">
+window.onload = function(){
+	/*
+	createElement(tagName) : 요소 노드(태그)를 생성
+	createTextNode(text) : 텍스트 노드(시작 태그와 끝 내그 사이의 내용)을 생성
+	appendChild(node) : 객체에 노드를 연결
+	*/
+	//태그 생성
+	let header = document.createElement('h1');
+	//텍스트 생성
+	let textNode = document.createTextNode('Hello DOM');
+	//노드 연결
+	header.appendChild(textNode);//h1태그에 텍스트를 추가
+	document.body.appendChild(header);//body 태그에 h1태그를 추가
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>

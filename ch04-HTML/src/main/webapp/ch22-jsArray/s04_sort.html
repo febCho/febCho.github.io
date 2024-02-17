@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 요소의 정렬</title>
+</head>
+<body>
+<script type="text/javascript">
+	const array = ['가', '하', '아', '나'];
+	
+	array.sort();//오름차순 정렬
+	document.write(array + '<br>');
+	
+	array.reverse();//현재 정렬의 반대로 정렬 
+	document.write(array + '<br>');
+	document.write('------------------------<br>');
+	
+	const array2 = [52,273,103,32];
+	//숫자 정렬(오름차순 정렬)
+	array2.sort(function(left,right){//콜백 함수
+		return left - right;
+	});
+	document.write(array2 + '<br>');
+	
+	//숫자 정렬(내림차순 정렬)
+	array2.sort(function(left,right){
+		return right - left;
+	});
+	document.write(array2);
+</script>
+</body>
+</html>

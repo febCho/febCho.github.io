@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>페이보릿 바이닐 레코즈</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/jquery-ui.min.css">
+<style type="text/css">
+/*dialog 스타일 적용*/
+#notice_poster{
+	margin:5px 10px 0 10px;
+}
+.notice{
+	font-weight:bold;
+	font-size:1em;
+	text-align:center;
+	margin:10px;
+}
+#notice_info, #notice_sell{
+	font-size:0.7em;
+	text-align:right;
+	list-style:none;
+}
+#notice_comment{
+	margin:0 0 20px 0;
+	font-size:13px;
+}
+
+/*로그인 메뉴 스타일 적용*/
+#login_nav,#lang_nav{
+	list-style:none;
+}
+#login_nav li,#lang_nav li{
+	display:inline-block;
+	font-family:sans-serif;
+	font-size:0.7em;
+	margin:0 5px;
+}
+nav a.login,nav a.lang{
+	text-decoration:none;
+}
+nav a.login:link, nav a.login:visited{
+	color:black;
+}
+nav a.lang:link, nav a.lang:visited{
+	color:gray;
+}
+nav a.login:hover,nav a.lang:hover{
+	color:#03b1fc;
+}
+nav a.login span#buy{
+	color:red;
+}
+.container-custom{
+	height:30px;
+}
+
+/*메인 메뉴 스타일 적용*/
+#mf{
+	font-family:'옛날사진관', serif;
+}
+#main_menu{
+	margin:0 0 -15px 0;
+}
+
+/*검색 스타일 적용*/
+.input-search{
+	border-radius:15px 0 0 15px;
+	padding:0 0 0 10px;
+	margin:0 40px 0 0;
+	float:left;
+	font-size:12px;
+	border:2px solid #26a3fc;
+	height:34px;
+	width:300px;
+}
+.input-search:focus{
+	outline:0;
+}
+#search-btn{
+	border-radius: 0 15px 15px 0;
+	margin-left:-42px;
+	border:2px solid #26a3fc;
+	padding:3px 10px;
+	position:absolute;
+}
+
+/*신상품 카드 그룹 스타일 적용*/
+@font-face{
+	font-family:'옛날사진관';
+	src:url('image/a옛날사진관5.ttf') format('truetype');
+}
+h6.np, h6.tp, h6.bp{
+	font-family:'옛날사진관', serif;
+}
+.new-price, .card-text{
+	text-decoration:none;
+}
+.new-price:link, .new-price:visited{
+	color:black;
+	font-weight:bold;
+}
+.card-text:link, .card-text:visited{
+	color:black;
+}
+
+
+/*베스트 상품 스타일 적용*/
+.tracklist{
+	color:gray;
+	font-size:10px;
+}
+.bp-group{
+	width:500px;
+}
+.accordion-button{
+	background-color:#e6f7fa;
+}
+.number{
+	font-family:'옛날사진관';
+	color:skyblue;
+	font-style:italic;
+}
+/*입고 신청 폼 스타일 적용*/
+.req{
+	float:left;
+	border:1px solid black;
+	border-radius:10px;
+	padding:20px;
+	background-color:#f2f4f5;
+}
+.btn{
+	font-size:0.8em;
+	width:80px;
+	height:30px;
+	font-weight:bold;
+}
+legend{
+	font-family:'옛날사진관', serif;
+	font-size:20px;
+}
+textarea{
+	resize:none;
+	width:370px;
+	height:200px;
+}
+#reqTitle{
+	width:215px;
+	height:20px;
+	font-size:13px;
+}
+#type{
+	font-size:13px;
+}
+
+/*인포메이션 스타일 적용*/
+.info{
+	float:right;
+	height:405px;
+	margin:0 0 0 30px;
+	border:none;
+}
+.info-t{
+	font-family:'옛날사진관', serif;
+	font-size:15px;
+}
+.info-c{
+	font-size:13px;
+}
+.delivery{
+	color:red;
+	text-decoration:none;
+}
+
+/*하단 회사 정보 메뉴 스타일 적용*/
+.com-info{
+	color:gray;
+	font-size:10px;
+	margin:5px 0 0 0;
+}
+#btn-seller{
+	background-color:dark gray;
+	color:white;
+}
+.com-info2{
+	width:800px;
+}
+</style>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#dialog').dialog({
+		resizable:false,
+		width:500,
+		height:410,
+		open:function(event,ui){
+			$(".ui-dialog-titlebar-close").hide();
+		},
+		buttons:{
+			close:function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+});
+
+</script>
+</head>
+<body>
+<!-- dialog 시작 -->
+<div id="dialog" title="notice">
+	<img src="image/fair.png" height=260 class="float-start" id="notice_poster">
+	<h3 class="notice">[제 12회 서울레코드페어 참가]</h3>
+	<div id="notice_comment">
+		페이보릿 바이닐 레코즈가 돌아오는 제 12회 서울레코드페어에 양일 모두 참가합니다.<br>
+		보유 중인 한정반 극소량 판매 예정이니 많은 관심 부탁드립니다.
+		<ul id="notice_sell">
+			<li><b>[판매 예정 항목]</b></li>
+			<li>백예린 - 1집 Every letter I sent you</li>
+			<li>IU - REMAKE ALBUM 꽃갈피</li>
+			<li>코드 쿤스트 - 4집 PEOPLE [컬러 2LP]<li>
+			<li>이외 추가 예정<li>
+		</ul>
+		<ul id="notice_info">
+			<li>코엑스 컨퍼런스룸E (3층)</li>
+			<li>11월 18일(토) 11:00-17:00</li>
+			<li>11월 19일(일) 11:00-16:00</li>
+			<li>문의 : recordfair2011@gmail.com</li>
+		</ul>
+	</div>
+</div>
+<!-- dialog 끝 -->
+<!-- 최상단 로그인 메뉴 시작 -->
+<nav class="navbar-light bg-light">
+	<div class="container-fluid row container-custom">
+		<!-- 언어 설정 -->
+		<ul id="lang_nav" class="col">
+			<li><a href="#" class="lang">한국어</a></li>
+			<li><a href="#" class="lang">English</a></li>
+			<li><a href="#" class="lang">日本語</a></li>
+		</ul>
+		<!-- 로그인 -->
+		<ul id="login_nav" class="col text-end">
+			<li><a href="#" class="login"><b>로그인</b></a></li>
+			<li><a href="#" class="login">회원가입</a></li>
+			<li><a href="#" class="login">장바구니[<span id="buy">0</span>]</a></li>
+			<li><a href="#" class="login">마이페이지</a></li>
+			<li><a href="#" class="login">고객센터</a></li>
+		</ul>
+	</div>
+</nav>
+<!-- 최상단 로그인 메뉴 끝 -->
+<div class="container">
+	<!-- 상단 배너 시작 -->
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			<a class="navbar-brand" href="http://localhost:8080/ch04-HTML/ch37-main/main.html">
+				<img src="image/logo_v2.png" width="150px">
+			</a>
+			<!-- 상단 검색 시작 -->
+			<div class="search-bar">
+				<input type="search" class="input-search" placeholder="자우림 10집 한정반">
+				<a href="#" id="search-btn"><img src="image/mag.png" width="15px"></a>
+			</div>
+			<!-- 상단 검색 끝 -->
+		</div>
+	</nav>
+	<!-- 상단 배너 끝 -->
+	<!-- 메인 메뉴 그룹 시작 -->
+	<nav class="navbar navbar-expand-lg" id="main_menu">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#" id="mf">Menu</a>
+			<!-- 모바일 메뉴 아이콘 시작 -->
+			<button class="navbar-toggler" type="button"
+			        data-bs-toggle="collapse"
+			        data-bs-target="#navbarContent">
+			     	<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- 모바일 메뉴 아이콘 끝 -->
+			<!-- 메뉴 시작 -->
+			<div class="collapse navbar-collapse" id="navbarContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"
+						   href="#" id="navbarDropdown"
+						   data-bs-toggle="dropdown">
+						   국내 음악
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="dropdown-item">대중가요</a></li>
+							<li><a href="#" class="dropdown-item">인디</a></li>
+							<li><a href="#" class="dropdown-item">힙합</a></li>
+							<li><a href="#" class="dropdown-item">재즈</a></li>
+							<li><a href="#" class="dropdown-item">록</a></li>
+							<li><a href="#" class="dropdown-item">뉴에이지</a></li>
+							<li><a href="#" class="dropdown-item">기타</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"
+						   href="#" id="navbarDropdown"
+						   data-bs-toggle="dropdown">
+						   해외 음악
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="dropdown-item">POP</a></li>
+							<li><a href="#" class="dropdown-item">JAZZ</a></li>
+							<li><a href="#" class="dropdown-item">J-POP</a></li>
+							<li><a href="#" class="dropdown-item">NEW AGE</a></li>
+							<li><a href="#" class="dropdown-item">etc.</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"
+						   href="#" id="navbarDropdown"
+						   data-bs-toggle="dropdown">
+						   영화 음악/OST
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="dropdown-item">국내</a></li>
+							<li><a href="#" class="dropdown-item">해외</a></li>
+							<li><a href="#" class="dropdown-item">일본</a></li>
+							<li><a href="#" class="dropdown-item">뮤지컬</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">턴테이블</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle"
+						   href="#" id="navbarDropdown"
+						   data-bs-toggle="dropdown">
+						   COMMUNITY
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#" class="dropdown-item">FAQ</a></li>
+							<li><a href="#" class="dropdown-item">상품 후기</a></li>
+							<li><hr class="dropdown divider"></li>
+							<li><a href="#" class="dropdown-item">이벤트</a></li>
+							<li><a href="#" class="dropdown-item">당첨자 발표</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 메뉴 끝 -->
+		</div>
+	</nav>
+	<hr>
+	<!-- 메인 메뉴 그룹 끝 -->
+	<!-- 중앙 캐러셀 시작 -->
+	<div class="container col-8">
+		<div id="carouselExample" class="carousel slide" 
+		                          data-bs-ride="carousel">
+		     <div class="carousel-indicators">
+		     	<button type="button" data-bs-target="#carouselExample"
+		     	        data-bs-slide-to="0" class="active"></button>
+		     	<button type="button" data-bs-target="#carouselExample"
+		     	        data-bs-slide-to="1"></button>
+		     	<button type="button" data-bs-target="#carouselExample"
+		     	        data-bs-slide-to="2"></button>
+		     	<button type="button" data-bs-target="#carouselExample"
+		     	        data-bs-slide-to="3"></button>
+		     </div>
+		     <div class="carousel-inner">
+		     	<!-- 0 이미지 시작 -->
+		     	<div class="carousel-item active" data-bs-interval="2500">
+		     		<img src="image/c1.jpg" class="d-block w-100">
+		     	</div>
+		     	<!-- 0 이미지 끝 -->
+		     	<!-- 1 이미지 시작 -->
+		     	<div class="carousel-item" data-bs-interval="2500">
+		     		<img src="image/c2.jpg" class="d-block w-100">
+		     	</div>
+		     	<!-- 1 이미지 끝 -->
+		     	<!-- 2 이미지 시작 -->
+		     	<div class="carousel-item" data-bs-interval="2500">
+		     		<img src="image/c3.jpg" class="d-block w-100">
+		     	</div>
+		     	<!-- 2 이미지 끝 -->
+		     	<!-- 3 이미지 시작 -->
+		     	<div class="carousel-item" data-bs-interval="2500">
+		     		<img src="image/c4.jpg" class="d-block w-100">
+		     	</div>
+		     	<!-- 3 이미지 끝 -->
+		     </div>
+		</div>
+	</div>
+	<!-- 중앙 캐러셀 끝 -->
+	<!-- 신상품 카드 그룹 시작 -->
+	<br>
+	<h6 class="np">NEW PRODUCT</h6>
+	<hr>
+	<div class="card-group">
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card1.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					크러쉬 (Crush) - 3집 wonderego [2LP]
+				</a></p>
+				<a href="#" class="new-price">75,700원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card2.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					Slom (슬롬) - 1집 WEATHER REPORT [LP]
+				</a></p>
+				<a href="#" class="new-price">56,400원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card3.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					터치드 (TOUCHED) - Purple [퍼플 컬러 LP]
+				</a></p>
+				<a href="#" class="new-price">44,600원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card4.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					선우정아 - 2집 It’s Okay, Dear [LP]
+				</a></p>
+				<a href="#" class="new-price">54,900원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card5.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					중경삼림 OST [3색 컬러 LP]
+				</a></p>
+				<a href="#" class="new-price">135,000원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/card6.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					심규선 (Lucia) - 몸과 마음 (EP) [투명 컬러 LP]
+				</a></p>
+				<a href="#" class="new-price">52,300원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+	</div>
+	<!-- 신상품 카드 그룹 시작 -->
+	<br><br>
+	<!-- 턴테이블 카드 그룹 시작 -->
+	<h6 class="tp">Turntable</h6>
+	<hr style="width:200px">
+	<div class="card-group row" style="position:relative">
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/t1.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					YearsStay 레트로 턴테이블 LP플레이어 8color
+				</a></p>
+				<a href="#" class="new-price">47,900원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/t2.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					Audio-technica 자동 턴테이블 AT-LP60X, 블랙
+				</a></p>
+				<a href="#" class="new-price">219,000원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+		<!-- 카드 시작 -->
+		<div class="card">
+			<a href="#"><img src="image/t3.jpg" class="card-img-top"></a>
+			<div class="card-body">
+				<p><a href="#" class="card-text">
+					브리츠 BZ-TP1000 블루투스 스피커/턴테이블
+				</a></p>
+				<a href="#" class="new-price">89,000원</a>
+			</div>
+		</div>
+		<!-- 카드 끝 -->
+	<!-- 턴테이블 카드 그룹 끝 -->
+	<br>
+	<!-- 베스트 리스트 시작 -->
+	<div class="bp-group">
+	<h6 class="bp">BEST PRODUCT</h6>
+	<hr>
+	<div class="accordion" id="accordionExample">
+		<!-- 1 item start -->
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingOne">
+				<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#collapseOne">
+					<div class="number">1. </div> Sarah Kang - 1집 how i remember [화이트 컬러 LP]
+				</button>
+			</h2>
+			<div id="collapseOne" class="accordion-collapse collapse"
+			data-ba-parent="#accordionExample">
+			<div class="accordion-body">
+				<img src="image/best1.jpg" width="100px">
+				<br><br>
+				<b>44,600원</b>
+				<p class="tracklist">
+					<br>
+					[TRACKLIST]<br>
+					prologue (Feat. Okhissa)<br>
+					cheeze (Feat. Andrew Kang)<br>
+					once in a moon<br>
+					miss u<br>
+					goodnight (Feat. Juju B. Goode)<br>
+					sweet dreams (interlude)<br>
+					about time<br>
+					let's run away (Feat. Orion Song)<br>
+					isn’t it enough (Feat. Albert Posis)<br>
+					handbook (Feat. Nieman)<br>
+					end credits [TITLE]<br>
+					epilogue<br>
+				</p>
+				<span class="badge bg-dark rounded-pill">누적 구매 : 4,020</span>
+				<br><br>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-info" style="width:130px">상세정보 보기</button>
+					<button type="button" class="btn btn-outline-info" style="width:100px">장바구니</button>
+					<button type="button" class="btn btn-outline-info" style="width:130px">바로 구매하기</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- 1 item end -->
+		<!-- 2 item start -->
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingTwo">
+				<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#collapseTwo">
+					<div class="number">2. </div> MARIAH CAREY - BUTTERFLY [LP]
+				</button>
+			</h2>
+			<div id="collapseTwo" class="accordion-collapse collapse"
+			data-ba-parent="#accordionExample">
+			<div class="accordion-body">
+				<img src="image/best2.jpg" width="100px">
+				<br><br>
+				<b>30,000원</b>
+				<p class="tracklist">
+					<br>
+					[TRACKLIST]<br>
+					Honey<br>
+					Butterfly<br>
+					My All<br>
+					The Roof<br>
+					Fourth Of July<br>
+					Breakdown<br>
+					Babydoll<br>
+					Close My Eyes<br>
+					Whenever You Call<br>
+					Fly Away (Butterfly Reprise)<br>
+					The Beautiful Ones<br>
+					Outside<br>
+				</p>
+				<span class="badge bg-dark rounded-pill">누적 구매 : 2,080</span>
+				<br><br>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-info" style="width:130px">상세정보 보기</button>
+					<button type="button" class="btn btn-outline-info" style="width:100px">장바구니</button>
+					<button type="button" class="btn btn-outline-info" style="width:130px">바로 구매하기</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- 2 item end -->
+		<!-- 3 item start -->
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingThree">
+				<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#collapseThree">
+					<div class="number">3. </div> YERIN BAEK(백예린) - 선물 EP [리메이크 앨범] [LP]
+				</button>
+			</h2>
+			<div id="collapseThree" class="accordion-collapse collapse"
+			data-ba-parent="#accordionExample">
+			<div class="accordion-body">
+				<img src="image/best3.jpg" width="100px">
+				<br><br>
+				<b>38,600원</b>
+				<p class="tracklist">
+					<br>
+					[TRACKLIST]<br>
+					A1 | 그럴때마다<br>
+					A2 | Antifreeze<br>
+					A3 | 돌아가자<br>
+					B1 | 왜? 날 *title<br>
+					B2 | 한계<br>
+					B3 | 산책 *title<br>
+				</p>
+				<span class="badge bg-dark rounded-pill">누적 구매 : 1,040</span>
+				<br><br>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-info" style="width:130px">상세정보 보기</button>
+					<button type="button" class="btn btn-outline-info" style="width:100px">장바구니</button>
+					<button type="button" class="btn btn-outline-info" style="width:130px">바로 구매하기</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- 3 item end -->
+		<!-- 4 item start -->
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingFour">
+				<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#collapseFour">
+					<div class="number">4. </div> ADELE - 21 [LP]
+				</button>
+			</h2>
+			<div id="collapseFour" class="accordion-collapse collapse"
+			data-ba-parent="#accordionExample">
+			<div class="accordion-body">
+				<img src="image/best4.jpg" width="100px">
+				<br><br>
+				<b>40,800원</b>
+				<p class="tracklist">
+					<br>
+					[TRACKLIST]<br>
+					Rolling In The Deep<br>
+					Rumour Has It<br>
+					Turning Tables<br>
+					Don't You Remember<br>
+					Set Fire To The Rain<br>
+					He Won't Go<br>
+					Take It All<br>
+					I'll Be Waiting<br>
+					One And Only<br>
+					Lovesong<br>
+					Someone Like You<br>
+				</p>
+				<span class="badge bg-dark rounded-pill">누적 구매 : 420</span>
+				<br><br>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-info" style="width:130px">상세정보 보기</button>
+					<button type="button" class="btn btn-outline-info" style="width:100px">장바구니</button>
+					<button type="button" class="btn btn-outline-info" style="width:130px">바로 구매하기</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- 4 item end -->
+		<!-- 5 item start -->
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingFive">
+				<button class="accordion-button collapsed" type="button"
+				data-bs-toggle="collapse" 
+				data-bs-target="#collapseFive">
+					<div class="number">5. </div> 이소라 - BEST [투명 핑크 컬러 2LP]
+				</button>
+			</h2>
+			<div id="collapseFive" class="accordion-collapse collapse"
+			data-ba-parent="#accordionExample">
+			<div class="accordion-body">
+				<img src="image/best5.jpg" width="100px">
+				<br><br>
+				<b>64,700원</b>
+				<p class="tracklist">
+					<br>
+					[TRACKLIST]<br>
+					Disc1<br>
+					A1 | 고백<br>
+					A2 | 처음 느낌 그대로<br>
+					A3 | 난 행복해<br>
+					A4 | 잊지 말기로 해r<br>
+					B1 | 그냥 이렇게<br>
+					B2 | 너무 다른 널 보면서<br>
+					B3 | 기억해 줘<br>
+					<br>
+					Disc2<br>
+					C1 | 청혼<br>
+					C2 | Blue Sky<br>
+					C3 | 믿음<br>
+					D1 | 우리 다시<br>
+					D2 | 내 곁에서 떠나가지 말아요<br>
+					D3 | 그대 안의 블루<br>
+				</p>
+				<span class="badge bg-dark rounded-pill">누적 구매 : 208</span>
+				<br><br>
+				<div class="btn-group">
+					<button type="button" class="btn btn-outline-info" style="width:130px">상세정보 보기</button>
+					<button type="button" class="btn btn-outline-info" style="width:100px">장바구니</button>
+					<button type="button" class="btn btn-outline-info" style="width:130px">바로 구매하기</button>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- 5 item end -->
+	</div>
+	</div>
+	<!-- 베스트 리스트 끝 -->
+	<br>
+	<hr>
+	<br>
+	<!-- 입고 신청 폼 시작 -->
+	<div class="container col-md-4 req">
+		<form action="request.jsp" method="post">
+			<fieldset>
+				<legend>입고 신청</legend>
+				<hr>
+				<select name="type" id="type">
+					<option value="국내 음악" selected="selected">국내 음악</option>
+					<option value="해외 음악">해외 음악</option>
+					<option value="영화 음악/OST">영화 음악/OST</option>		
+				</select>
+				<b>제목</b>
+				<input type="text" name="Title" id="reqTitle" autocomplete="off">
+				<br><br>
+				<b>문의 내용</b><br>
+				<textarea maxlength="1000" id="content"></textarea>
+				<br>
+				<input type="submit" class="btn btn-outline-dark" value="문의하기">
+			</fieldset>
+		</form>
+	</div>
+	<!-- 입고 신청 폼 끝 -->
+	<!-- 인포메이션 시작 -->
+	<div class="container col">
+		<div class="card-group">
+			<!-- 카드 시작 -->
+			<div class="card border-secondary mb-3 info">
+				<div class="card-header info-t">C.S CENTER</div>
+				<div class="card-body text-secondary">
+					<h5 class="card-title">02-1234-5678</h5>
+					<p class="card-text info-c">
+						온라인 상담시간 PM 13:00 ~ 19:00
+						<br>
+						favvr@naver.com
+					</p>
+				</div>
+			</div>
+			<!-- 카드 끝 -->
+			<!-- 카드 시작 -->
+			<div class="card border-secondary mb-3 info">
+				<div class="card-header info-t">BANK ACCOUNT</div>
+				<div class="card-body text-secondary">
+					<p class="card-text info-c">
+						국민은행 111-111-1111
+						<br>
+						카카오뱅크 222-22-22222
+						<br>
+						예금주 : 조지영
+					</p>
+				</div>
+			</div>
+			<!-- 카드 끝 -->
+			<!-- 카드 시작 -->
+			<div class="card border-secondary mb-3 info">
+				<div class="card-header info-t">DELIVERY / RETURN</div>
+				<div class="card-body text-secondary">
+					<p class="card-text info-c">
+						CJ대한통운 1588-1255
+						<a href="#" class="delivery">[배송조회]</a>
+						<br>
+						반품주소 : 00000
+						<br>
+						서울특별시 XX로123
+					</p>
+				</div>
+			</div>
+			<!-- 카드 끝 -->
+		</div>
+	</div>
+	<!-- 인포메이션 끝 -->
+	<br>
+	<hr>
+	<br>
+	<!-- 하단 회사 정보 메뉴 시작 -->
+	<div class="com-info">
+		상호 : 페이보릿 바이닐 레코즈 | 주소 : 서울특별시 XX로123 1층<br>
+		사업자등록번호:111-11-11111 | 통신판매업신고번호 : 2023-서울XX-0000
+		<button id="btn_seller">사업자정보확인 ></button><br>
+		대표 : 조지영 | 개인정보관리자 : 조지영(favvr@naver.com)<br><br>
+		Copyright(c) 페이보릿 바이닐 레코즈 allrights reserved.<br>
+	</div>
+	<br>
+	<img src="image/footer_mark.gif" class="com-info2">
+	<!-- 하단 회사 정보 메뉴 끝 -->
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

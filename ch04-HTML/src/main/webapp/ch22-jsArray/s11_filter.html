@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>filter</title>
+</head>
+<body>
+<script type="text/javascript">
+	//filter() 메서드는 특정 조건을 만족하는 새로운 배열을 만들 때 사용
+	const array = [1,2,3,4,5,6,7,8,9,10];
+	
+	let new_array = array.filter(function(element,index,array){
+		//조건이 true이면 해당 element의 값을 넣어서 새로운 배열을 생성한 후 반환
+		return element <= 5;
+	});
+	document.write(new_array);
+</script>
+</body>
+</html>

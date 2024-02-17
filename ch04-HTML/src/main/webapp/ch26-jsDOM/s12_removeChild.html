@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서 객체의 제거</title>
+<script type="text/javascript">
+window.onload = function(){
+	let willRemove = document.getElementById('will_remove');
+	
+	//3초 후에 함수 호출
+	setTimeout(function(){
+		//문서 객체 제거
+		//document.body.removeChild(willRemove);
+		
+		//문서 객체의 하위 요소를 모두 제거
+		document.body.innerHTML = '';
+		
+	},3000);
+};
+</script>
+</head>
+<body>
+	<h1 id="will_remove">Header</h1>
+	<h1>Header2</h1>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>생성자 함수</title>
+</head>
+<body>
+<script type="text/javascript">
+	//생성자 함수 지정
+	function Student(name,korean,math,english,science){
+		//속성 지정
+		this.이름 = name;
+		this.국어 = korean;
+		this.수학 = math;
+		this.영어 = english;
+		this.과학 = science;
+		//메서드 지정
+		this.getSum = function(){//총점 구하기
+			return this.국어 + this.수학 + this.영어 + this.과학;
+		};
+		this.getAverage = function(){
+			return this.getSum()/4;
+		};
+		this.toString = function(){
+			return this.이름 + ', ' + this.getSum() + ', ' + this.getAverage();
+		};
+	}
+	
+	//객체 생성
+	const student = new Student('홍길동',99,93,98,97);
+	document.write(student + '<br>');
+	document.write('----------------------------<br>');
+	
+	//배열과 객체를 활용해서 여러 명의 성적 데이터 처리하기
+	
+	//빈 배열
+	const students = [];
+	students.push(new Student('박문수',99,98,91,88));
+	students.push(new Student('장영실',80,98,50,88));
+	students.push(new Student('김유신',99,70,91,68));
+	students.push(new Student('이순신',100,98,100,88));
+	students.push(new Student('강호동',100,98,99,77));
+	
+	//출력
+	document.write('이름, 총점, 평균<br>');
+	for(let i in students){
+		document.write(students[i].toString() + '<br>');
+	}
+</script>
+</body>
+</html>

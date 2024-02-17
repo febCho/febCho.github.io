@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자식 선택자(직계 자식만을 의미)</title>
+<style type="text/css">
+/*지정한 자식 태그(직계 자식)만 선택*/
+body > div {border:3px solid blue;}
+</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>사과</li>
+			<li>바나나</li>
+			<li>포도</li>
+			<li>멜론</li>
+		</ul>
+		<div>하늘</div>
+	</div>
+	<p>
+		<span>하하</span>
+	</p>
+</body>
+</html>

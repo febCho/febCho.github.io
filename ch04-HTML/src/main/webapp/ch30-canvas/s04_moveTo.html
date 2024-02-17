@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스</title>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		
+		//색칠된 삼각형
+		context.beginPath();
+		context.moveTo(50,50);
+		context.lineTo(150,50);
+		context.lineTo(50,150);
+		context.closePath();
+		
+		context.fill();//색칠
+		
+		//빨간색 테두리의 삼각형
+		context.beginPath();
+		context.moveTo(80,80);
+		context.lineTo(200,100);
+		context.lineTo(100,200);
+		context.closePath();
+		
+		context.strokeStyle = 'rgb(200,0,0)';
+		context.stroke();
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="300"></canvas>
+</body>
+</html>

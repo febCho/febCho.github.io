@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그명을 통해서 문서 객체 탐색</title>
+<script type="text/javascript">
+window.onload = function(){
+	let spans = document.getElementsByTagName('span');
+	
+	for(let i=0;i<spans.length;i++){
+		if(i%2==1){
+			spans[i].innerHTML = '우주';
+		}else{
+			spans[i].innerHTML = '지구';
+		}
+	}
+};
+</script>
+</head>
+<body>
+	<span>하늘</span><br>
+	<span>하늘</span><br>
+	<span>하늘</span>
+</body>
+</html>

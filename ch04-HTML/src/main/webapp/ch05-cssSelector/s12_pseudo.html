@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS3의 가상클래스 선택자</title>
+<style type="text/css">
+	div{border:1px solid blue;}
+	/*부모 내에서 자식을 탐색할 때는 후손 태그까지 확인해서 첫번째, 마지막 자식 판단*/
+	/*부모의 첫번째 자식*/
+	p:first-child{background-color:yellow;}
+	
+	/*부모의 마지막 자식*/
+	p:last-child{background-color:pink;}
+	
+	/*부모 내의 같은 유형의 처음, 마지막 판단은 직계자식 범위 내에서*/
+	/*부모 내에서 같은 유형의 첫번째 자식*/
+	p:first-of-type{color:green;font-weight:bold;}
+	
+	/*부모 내에서 같은 유형의 마지막 번째 자식*/
+	p:last-of-type{color:red;font-weight:bold;}
+</style>
+</head>
+<body>
+	<p>하하</p>
+	<p>호호</p>
+	<p>헤헤</p>
+	<div>
+		<p>봄</p>
+		<p>여름</p>
+		<p>가을</p>
+		<p>겨울</p>
+	</div>
+</body>
+</html>

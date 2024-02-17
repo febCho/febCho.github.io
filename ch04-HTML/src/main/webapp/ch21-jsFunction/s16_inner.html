@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>지역변수의 유효범위 - 클로저</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+지역 변수는 함수가 실행될 때 생성되고 함수가 종료될 때 사라짐
+클로저를 이용하면 지역 변수를 남겨 둘 수 있음
+지역 변수를 남겨두는 현상을 클로저라고 부름
+ */
+	function outerFunction(name){
+		//지역변수 선언 및 초기화
+		let output = 'I love ' + name + '!!!!';
+		//내부함수를 정의하고 정의한 내부함수 반환
+		return function(){
+			alert(output);
+		};
+	}
+	
+	let m = outerFunction('유재성');
+	m();//지역변수를 남겨두는 클로저 현상
+</script>
+</body>
+</html>

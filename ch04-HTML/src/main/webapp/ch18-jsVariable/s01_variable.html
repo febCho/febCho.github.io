@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	변수명의 정의
+	1. 키워드(예약어)를 사용하면 안 된다.
+	2. 숫자로 시작하면 안 된다.
+	3. 특수문자는 _와 $만 허용한다.
+	4. 공백 문자를 포함할 수 없다.
+	
+	식별자를 잘못 지정한 예
+	break (키워드)
+	10alpha (숫자로 시작)
+	#num (특수문자 사용)
+	has space (공백 사용)
+	
+	식별자의 의미를 더 명확하게 하려고 사용하는 규칙
+	1. 생성자 함수의 이름은 항상 대문자로 시작
+	2. 변수, 인스턴스, 함수, 메서드의 이름은 항상 소문자로 시작
+	3. 여러 단어로 이루어진 식별자는 각 단어의 첫 글자를 대문자로 함
+	*/
+	
+	//변수 선언
+	var num;
+	
+	//변수에 값을 할당
+	num = 123;
+	
+	//출력
+	document.write('num = ' + num);
+	document.write('<br>');
+	
+	//두 개 이상의 변수를 한 번에 선언
+	var a,b;
+	
+	a=10;
+	b=5;
+	
+	document.write('a + b = ' + (a+b));
+	document.write('<br>');
+	
+	//변수 선언과 초기화를 동시에
+	var c=10, d=3.5;
+	
+	document.write('c + d = ' + (c+d));
+	document.write('<br>');
+	
+	//한글 사용 가능
+	var 번호 = 3;
+	document.write('번호 = ' + 번호);
+</script>
+</body>
+</html>

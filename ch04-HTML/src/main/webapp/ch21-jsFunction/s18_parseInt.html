@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>parseInt(), parseFloat()</title>
+</head>
+<body>
+<script type="text/javascript">
+	let num = '1234';
+	let won = '1234원';
+	let won2 = '원1234';
+	
+	document.write(Number(num) + '<br>');//string -> number
+	document.write(parseInt(num) + '<br>');
+	document.write('-----------------------------<br>');
+	
+	document.write(Number(won) + '<br>');//NaN
+	document.write(parseInt(won) + '<br>');//앞의 숫자를 추출해서 형변환 
+	document.write('-----------------------------<br>');
+	
+	document.write(Number(won2) + '<br>');//NaN
+	document.write(Number(won2) + '<br>');//NaN
+	document.write('-----------------------------<br>');
+	
+	let num2 = '24.56';
+	let dollar = '1.56$';
+	let dollar2 = '$1.56';
+	
+	document.write(Number(num2) + '<br>');//string -> Number
+	document.write(parseFloat(num2) + '<br>');
+	document.write('-----------------------------<br>');
+	
+	document.write(Number(dollar) + '<br>');//NaN
+	document.write(parseFloat(dollar) + '<br>');//앞의 숫자를 추출해서 형변환
+	document.write('-----------------------------<br>');
+	
+	document.write(Number(dollar2) + '<br>');//NaN
+	document.write(parseFloat(dollar2) + '<br>');//NaN
+	document.write('-----------------------------<br>');
+	
+	let no1 = '10';
+	let no2 = '3.67';
+	
+	document.write(parseFloat(no1) + '<br>');//10
+	document.write(parseInt(no2) + '<br>');//소수점 이하 자리 절삭
+</script>
+</body>
+</html>

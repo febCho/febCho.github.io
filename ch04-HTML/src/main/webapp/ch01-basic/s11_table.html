@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블</title>
+</head>
+<body>
+<h3>th, td 태그의 사용 및 속성 지정</h3>
+<table border="1">
+	<tr>
+		<th width="100" height="100" background="../files/landscape.jpg">서울</th>
+		<th width="100" height="100"><img src="../files/poster.jpg" width="100" height="100"></th>
+		<th width="100" height="100">광주</th> 
+	</tr>
+	<tr>
+		<!-- align : 수평으로 정렬 -->
+		<td height="100" bgcolor="f3f5f3">왼쪽</td>
+		<td align="center">가운데</td>
+		<td align="right">오른쪽</td>
+	</tr>
+	<tr>
+		<td valign="top" height="100">상단</td>
+		<td>중앙</td>
+		<td valign="bottom">하단</td>
+	</tr>
+</table>
+
+<h3> 셀 합치기</h3>
+<table border="1">
+	<tr>
+		<td width="100">1</td>
+		<!-- 같은 행에서 셀을 합칠 때 colspan 사용 -->
+		<td colspan="2">2, 3</td>
+	</tr>
+	<tr>
+		<!-- 다른 행의 셀을 합칠 때 rowspan 사용 -->
+		<td width="100" rowspan="2">4, 7</td>
+		<td width="100">5</td>
+		<td width="100">6</td>
+	</tr>
+	<tr>
+		<td width="100">8</td>
+		<td width="100">9</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Basic Page</title>
+<style type="text/css">
+	/*기본 설정*/
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		font-family:'맑은 고딕','Malgun Gothic',Gothic,sans-serif;
+		width:960px;
+		margin:0 auto;
+		background:#E6E6E6;
+	}
+	a{
+		text-decoration:none;
+	}
+	ul{
+		list-style:none;
+	}
+	#page_wrap{
+		background:white;
+		margin:40px 0;
+		padding:10px 20px;
+		border-radius:5px;
+		box-shadow:0 2px 6px rgba(100,100,100,0.3);
+	}
+	/*헤더 구성하기*/
+	#main_header{
+		padding:40px 50px;
+	}
+	.master-title{
+		font-size:30px;
+		color:#181818;
+	}
+	.master-desc{
+		font-size:15px;
+		font-weight:500;
+		color:#383838;
+	}
+	/*내비게이션 및 풀다운 메뉴 구성하기*/
+	#main_nav{
+		border-top:1px solid #C8C8C8;
+		border-bottom:1px solid #C8C8C8;
+		margin-bottom:20px;
+		height:40px;
+	}
+	.pull-left{
+		float:left;
+	}
+	.pull-right{
+		float:right;
+	}
+	
+	/*메뉴 타이틀*/
+	.menu-title{
+		display:block;
+		height:30px;
+		line-height:30px;
+		text-align:center;
+		padding:5px 20px;
+	}
+	
+	/*메뉴를 가로 방향으로 배치*/
+	.outer-menu-item{
+		float:left;
+		position:relative;
+	}
+	.outer-menu-item:hover{
+		background:black;
+		color:white;
+	}
+	
+	/*하위 메뉴 설정*/
+	.outer-menu-item:hover .inner-menu{
+		display:block;/*숨겨져 있는 메뉴 노출*/
+	}
+	
+	.inner-menu{
+		display:none; /*하위 메뉴 숨기기*/
+		position:absolute;
+		top:40px;
+		left:0;
+		width:100%;
+		background:white;
+		box-shadow:0 2px 6px rgba(5,5,5,0.9);
+		z-index:1000;
+		text-align:center;
+	}
+	
+	/*하위 메뉴 링크에 스타일 적용*/
+	.inner-menu-item >a{
+		display:block;
+		padding:5px 10px;
+		color:black;
+	}
+	
+	.inner-menu-item > a:hover{
+		background:black;
+		color:white;
+	}
+	
+	/*검색 양식 추가하기(내비게이션 내부 검색)*/
+	.search-bar{
+		height:26px;
+		padding:7px;
+	}
+	
+	.input-search{
+		display:block;
+		float:left;
+		background-color :#FFFFFF;
+		border:1px solid #CCCCCC;
+		             /*상좌 상우 하우 하좌*/
+		border-radius:15px 0 0 15px;
+		box-shadow:0 1px 1px rgba(0,0,0,0.05);
+		width:120px;
+		height:26px;
+		padding:0 0 0 10px;
+		font-size:12px;
+		color:#555555;
+	}
+	.input-search:focus{
+		border-color:rgba(82,168,236,0.8);
+		/*border 바깥 외곽선*/
+		outline:0;
+		box-shadow:0 1px 1px rgba(0,0,0,0.05);
+	}
+	.input-search-submit{
+		width:50px;
+		height:26px;
+		             /*상좌 상우 하우 하좌*/
+		border-radius: 0 15px 15px 0;
+		border: 1px solid #CCCCCC;
+		margin-left:-1px;
+	}
+	
+	/*본문(중앙 내용)*/
+	#content{
+		overflow: hidden;
+	}
+	#main_section{
+		float:left;
+		width:710px;
+	}
+	#main_aside{
+		float:right;
+		width:200px;
+	}
+	
+	/*본문(본문 포스트)*/
+	article{
+		padding:0 10px 20px 10px;
+		border-bottom:1px solid #C8C8C8;
+	}
+	
+	.article-header{
+		padding:20px 0;
+	}
+	.article-title{
+		font-size:25px;
+		font-weight:500;
+		padding-bottom:10px;
+	}
+	.article-date{
+		font-size:13px;
+	}
+	.article-body{
+		font-size:14px;
+	}
+	
+	/*본문(사이드 메뉴)*/
+	.aside-list{
+		padding:10px 0 3px 0;
+	}
+	.aside-list > h3{
+		font-size:15px;
+		font-weight:600;
+	}
+	.aside-list li a{
+		margin-left:8px;
+		font-size:13px;
+		color:#6C6C6C;
+	}
+	/*커서 처리*/
+	.outer-menu-item,.input-search-submit{
+		cursor:pointer;
+	}
+</style>
+</head>
+<body>
+	<div id="page_wrap">
+		<!-- 머리말 시작 -->
+		<header id="main_header">
+			<hgroup>
+				<h1 class="master-title">HTML5 Example Preview</h1>
+				<h2 class="master-desc">서울동아리</h2>
+			</hgroup>
+		</header>
+		<!-- 머리말 끝 -->
+		<!-- 내비게이션 시작 -->
+		<nav id="main_nav">
+			<!-- 메뉴 시작 -->
+			<div class="pull-left">
+				<ul class="outer-menu">
+					<li class="outer-menu-item">
+						<span class="menu-title">HTML5</span>
+						<ul class="inner-menu">
+							<li class="inner-menu-item"><a href="1.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="2.html">데이터</a></li>
+						</ul>
+					</li>
+					<li class="outer-menu-item">
+						<span class="menu-title">CSS3</span>
+						<ul class="inner-menu">
+							<li class="inner-menu-item"><a href="1.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="2.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="3.html">데이터</a></li>
+						</ul>
+					</li>
+					<li class="outer-menu-item">
+						<span class="menu-title">JavaScript</span>
+						<ul class="inner-menu">
+							<li class="inner-menu-item"><a href="1.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="2.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="3.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="4.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="5.html">데이터</a></li>
+							<li class="inner-menu-item"><a href="6.html">데이터</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 메뉴 끝 -->
+			<!-- 검색 시작 -->
+			<div class="pull-right">
+				<div class="search-bar">
+					<form>
+						<input type="search" class="input-search">
+						<input type="submit" class="input-search-submit"
+						                     value="검색">
+					</form>
+				</div>
+			</div>
+			<!-- 검색 끝 -->
+		</nav>
+		<!-- 내비게이션 끝 -->
+		<!-- 내용 시작 -->
+		<div id="content">
+			<!-- 본문 좌측 영역 시작 -->
+			<section id="main_section">
+				<article>
+					<div class="article-header">
+						<h1 class="article-title">HTML5 개요와 활용</h1>
+						<p class="article-date">2023년10월19일</p>
+					</div>
+					<div class="article-body">
+						<img src="../files/landscape.jpg" width="430" height="280">
+						<br>
+						<br>
+						<p>서울 경기 부산 인천 광주 강원 제주</p>
+						<br>
+						<p>서울 경기 부산 인천 광주 강원 제주</p>
+					</div>
+				</article>
+				<article>
+					<div class="article-header">
+						<h1 class="article-title">HTML5 응용과 실습</h1>
+						<p class="article-date">2023년10월20일</p>
+					</div>
+					<div class="article-body">
+						<img src="../files/landscape.jpg" width="430" height="280">
+						<br>
+						<br>
+						<p>서울 경기 부산 인천 광주 강원 제주</p>
+						<br>
+						<p>서울 경기 부산 인천 광주 강원 제주</p>
+					</div>
+				</article>
+			</section>
+			<!-- 본문 좌측 영역 끝 -->
+			<!-- 본문 우측 영역 시작 -->
+			<aside id="main_aside">
+				<div class="aside-list">
+					<h3>카테고리</h3>
+					<ul>
+						<li><a href="a.html">데이터</a></li>
+						<li><a href="b.html">데이터</a></li>
+						<li><a href="c.html">데이터</a></li>
+						<li><a href="d.html">데이터</a></li>
+					</ul>
+				</div>
+				<div class="aside-list">
+					<h3>최신 글</h3>
+					<ul>
+						<li><a href="a.html">데이터</a></li>
+						<li><a href="b.html">데이터</a></li>
+						<li><a href="c.html">데이터</a></li>
+						<li><a href="d.html">데이터</a></li>
+					</ul>
+				</div>
+			</aside>
+			<!-- 본문 우측 영역 끝 -->
+		</div>
+		<!-- 내용 끝 -->
+		<!-- 꼬리말 시작 -->
+		<footer id="main_footer">
+			<a href="#">HTML5 Programming</a>
+		</footer>
+		<!-- 꼬리말 끝 -->
+	</div>
+</body>
+</html>

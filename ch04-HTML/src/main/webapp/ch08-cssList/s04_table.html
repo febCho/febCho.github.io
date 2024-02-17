@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>table</title>
+<style type="text/css">
+table{
+	border:solid 1px orange;
+	/*
+	테두리를 지정하면 기본적으로 두 줄인데
+	한 줄로 표시하고 싶으며 collapse로 지정
+	*/
+	border-collapse:collapse;
+	width:500px;
+	margin:0 auto; /*상하 : 0 좌우 : auto*/
+	caption-side:bottom; /*제목 위치 지정*/
+}
+th{
+	border:solid 1px orange;
+	background-color:#FFCC66;
+	color:white;
+	padding:5px;
+}
+td{
+	border:solid 1px orange;
+	height:100px;
+	text-align:center;/*가로 방향 정렬*/
+	vertical-align:top;/*세로 방향 정렬*/
+}
+tr.bg td{
+	color:#000000;
+	background-color:#EAF2D3;
+	vertical-align:bottom;
+}
+caption{
+	color:#FF6600;
+	font-size:11px;
+	font-weight:bold;
+	margin-top:5px;
+}
+</style>
+</head>
+<body>
+<table>
+	<caption>table에 스타일 추가</caption>
+	<tr>
+		<th>도시</th>
+		<th>산</th>
+		<th>바다</th>
+	</tr>
+	<tr>
+		<td>서울</td>
+		<td>도봉산</td>
+		<td>동해</td>
+	</tr>
+	<tr class="bg">
+		<td>부산</td>
+		<td>북한산</td>
+		<td>남해</td>
+	</tr>
+</table>
+</body>
+</html>

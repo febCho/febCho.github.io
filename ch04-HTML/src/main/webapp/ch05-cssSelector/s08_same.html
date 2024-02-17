@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>동위 선택자</title>
+<style type="text/css">
+/*
+선택자A+선택자B : 선택자A 바로 뒤에 위치하는 선택자B만 선택
+선택자A~선택자B : 선택자A 뒤에 위치하는 선택자B와 동일한 종류의 태그들 모두 선택
+*/
+h1 + h2 {color:red;}
+div ~ p {color:blue;}
+
+</style>
+</head>
+<body>
+<h1>header1</h1>
+<h2>header2</h2>
+<h2>header2</h2>
+<h2>header2</h2>
+
+<div>div</div>
+<p>paragraph</p>
+<p>paragraph</p>
+<p>paragraph</p>
+<p>paragraph</p>
+
+</body>
+</html>

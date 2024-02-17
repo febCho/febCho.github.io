@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS 선택자를 통해서 객체 탐색</title>
+<script type="text/javascript">
+window.onload = function(){
+	//CSS의 선택자를 파라미터에 전달하면 하나의 태그를 호출
+	let header1 = document.querySelector('#header_1');
+	let header2 = document.querySelector('#header_2');
+	
+	header1.innerHTML = '하하';
+	header2.innerHTML = '호호';
+	
+	//CSS 선택자를 명시하면 여러 개의 태그를 반환하는 상황에서도
+	//querySelector는 같은 태그의 최상단의 태그만 접근 가능
+	let elem = document.querySelector('li');
+	elem.style.backgroundColor = 'yellow';
+};
+</script>
+</head>
+<body>
+	<h1 id="header_1">Header</h1>
+	<h1 id="header_2">Header</h1>
+	
+	<ul>
+		<li>사과</li>
+		<li>바나나</li>
+		<li>오렌지</li>
+	</ul>
+</body>
+</html>

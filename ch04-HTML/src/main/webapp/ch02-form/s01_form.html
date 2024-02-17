@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<h3>기본 폼</h3>
+<!-- 
+서버에 데이터를 전송할 때는 form 태그 안에 하위 태그 input, select, textarea
+등을 명시하고 태그에 데이터를 입력해서 전송함.
+form 태그 밖에 명시한 태그에 입력한 데이터는 전송되지 않음.
+ -->
+ <form action="a.jsp" method="post">
+ 	<!-- 한 줄 입력 태그 -->
+ 	<!-- 
+ 	type="text" : 한 줄 입력 가능
+ 	name : 입력한 값을 식별하는 식별자
+ 	size : 외부에서 보여지는 크기
+ 	maxlength : 최대 입력 가능 글자수
+ 	-->
+ 	이름 <input type="text" name="name" size="10" maxlength="15"><br>
+ 	비밀번호 <input type="password" name="password" size="10"><br>
+ 	파일 업로드 <input type="file" name="image"><br>
+ 	좋아하는 계절<br>
+ 	<!-- checkbox는 다중 선택 가능 -->
+ 	<input type="checkbox" name="season" value="봄">봄
+ 	<input type="checkbox" name="season" value="여름">여름
+	<input type="checkbox" name="season" value="가을"
+										checked="checked">가을
+	<input type="checkbox" name="season" value="겨울">겨울
+	<br>
+	국적<br>
+	<!-- radio는 단일 선택 가능 -->
+	<input type="radio" name="country" value="대한민국"
+										checked="checked">대한민국
+	<input type="radio" name="country" value="영국">영국
+	<input type="radio" name="country" value="프랑스">프랑스
+	<br>
+	학교<br>
+	<select name="school">
+		<option value="초등학교">초등학교</option>
+		<option value="중학교">중학교</option>
+		<option value="고등학교">고등학교</option>
+		<option value="대학교" selected="selected">대학교</option>		
+	</select>
+	<br>
+	지역<br>
+	<!-- 다중 선택 -->
+	<select name="reign" multiple="multiple">
+		<option value="서울">서울</option>
+		<option value="부산">부산</option>
+		<option value="대구">대구</option>
+		<option value="광주">광주</option>		
+	</select>
+	<br>
+	직업<br>
+	<select name="job">
+		<optgroup label="전문직">
+			<option value="의사">의사</option>
+			<option value="프로그래머">프로그래머</option>
+			<option value="헤어 디자이너">헤어 디자이너</option>
+			<option value="경찰">경찰</option>			
+		</optgroup>
+			<optgroup label="스포츠 선수"></optgroup>
+			<option value="농구 선수">농구 선수</option>
+			<option value="야구 선수">야구 선수</option>
+			<option value="축구 선수">축구 선수</option>
+			<option value="배구 선수">배구 선수</option>
+	</select>
+	<br>
+	내용<br>
+	<!-- textarea : 여러 줄 입력 태그 -->
+	<textarea rows="5" cols="50" name="content"></textarea>
+	<br>
+	<input type="submit" value="전송">
+	<input type="reset" value="초기화">
+ </form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Canvas</title>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		let img = new Image();
+		img.src = '../files/landscape.jpg';
+		img.onload = function(){
+			context.drawImage(img,10,10);//이미지 객체, x, y
+			
+			context.fillStyle='rgb(200,0,0)';//색상 지정
+			context.fillRect(20,20,100,100);//시각형 x,y,width,height
+		};
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="400"></canvas>
+</body>
+</html>

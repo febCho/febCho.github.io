@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>캔버스</title>
+<script type="text/javascript">
+window.onload = function(){
+	let canvas = document.getElementById('canvas');
+	if(canvas.getContext){
+		let context = canvas.getContext('2d');
+		
+		/*
+		선 그리기
+		1. 패스 시작
+		2. 선 그리기
+		3. 패스 닫기
+		*/
+		context.beginPath();//패스 시작
+		context.moveTo(50,50);//시작점을 옮기는 역할
+		context.lineTo(80,80);//왼쪽 작은 직선
+		
+		context.moveTo(140,80);
+		context.lineTo(170,50);//오른쪽 작은 직선
+		
+		
+		context.moveTo(60,150);
+		context.lineTo(170,150);//아래 직선
+		
+		context.closePath();
+		
+		context.stroke();//경로에 테두리 표시, 명시하지 않으면 선이 그려지지 않음.
+	}else{
+		alert('브라우저가 캔버스를 지원하지 않습니다.');
+	}
+};
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="300"></canvas>
+</body>
+</html>
