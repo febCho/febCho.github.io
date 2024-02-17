@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- 
+AspectJ의 Pointcut 표현식
+
+execution(Integer kr.spring.ch01..WriteArticleService.write(..))
+리턴 타입이 Integer인 WriteArticleService의 
+write() 메서드(파라미터는 0개 이상)를 kr.spring.ch01 하위 패키지까지 찾기
+
+execution(* kr.spring.ch01.*.*())
+kr.spring.ch01 패키지의 파라미터가 없는 모든 메서드 호출
+
+execution(* kr.spring.ch01..*.*(..))
+kr.spring.ch01 패키지 및 하위 패키지에 있는 파라미터가 0개 이상인 메서드 호출
+
+execution(* get*(*))
+이름이 get으로 시작하고 1개의 파라미터를 갖는 메서드 호출
+
+execution(* get*(*,*))
+이름이 get으로 시작하고 2개의 파라미터를 갖는 메서드 호출
+
+execution(* read*(Integer,..))
+메서드 이름이 read로 시작하고, 첫 번째 파라미터 타입이 Integer이며
+1개 이상의 파라미터를 갖는 메서드 호출
+ -->	
+	<!-- 공통 기능이 구현된 클래스 -->
+	<bean id="myFirstAdvice" class="kr.spring.ch20.MyFirstAdvice"/>
+	<bean id="product" class="kr.spring.product.Product"/>
+	
+	<!-- AOP 설정 -->
+	<aop:config>
+		<!-- 공통 기능을 부여한 클래스 -->
+		<aop:aspect id="aspect" ref="myFirstAdvice">
+			<!-- 공통 기능을 적용할 클래스(핵심 기능을 구현할 클래스)를 검색 -->
+			<aop:pointcut expression="execution(public String launch())" id="publicMethod"/>
+			<!-- 핵심 기능을 실행할 때 어느 시점에 공통 기능을 적용할지 지정 -->
+			<!-- <aop:before method="before" pointcut-ref="publicMethod"/> -->
+			<!-- <aop:after-returning method="afterReturning" 
+				pointcut-ref="publicMethod" returning="msg"/> -->
+			<!-- <aop:after-throwing method="afterThrowing" 
+				pointcut-ref="publicMethod" throwing="ex"/> -->
+			<!-- <aop:after method="after" pointcut-ref="publicMethod"/>-->
+			<aop:around method="around" pointcut-ref="publicMethod"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

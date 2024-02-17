@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- @Autowired, @Resource 어노테이션을 사용할 경우 아래 설정 명시 -->
+	<context:annotation-config/>
+	
+	<!-- @Autowired 어노테이션을 이용한 의존 관계 자동 설정 -->
+	<bean id="monitor" class="kr.spring.ch16.SystemMonitor">
+		<property name="periodTime">
+			<value>10</value>
+		</property>
+	</bean>
+	<bean id="sender1" class="kr.spring.ch16.SmsSender"/>
+	
+	<!-- @Resource 어노테이션을 이용한 의존 관계 자동 설정 -->
+	<bean id="homeController" class="kr.spring.ch17.HomeController"/>
+	<bean id="camera1" class="kr.spring.ch17.Camera" p:number="1"/>
+	<bean id="cameraz" class="kr.spring.ch17.Camera" p:number="2"/>
+	<bean id="camera3" class="kr.spring.ch17.Camera" p:number="3"/>	
+</beans>
