@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+
+.page-main{
+	width:700px;
+	margin:0 auto;
+}
+.result-display{
+	width:400px;
+	height:200px;
+	/*정중앙에 div를 배치하기 위한 설정*/
+	position:absolute;
+    top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+    /*테두리*/
+	border:1px solid #000;
+	/*하위 요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+	display: flex;
+	/*세로 정렬*/
+  	align-items: center;
+  	/*가로 정렬*/
+  	justify-content: center;
+}
+.align-right{
+	text-align:right;
+}
+.align-center{
+	text-align:center;
+}
+/*목록*/
+table{
+	width:100%;
+	border:1px solid #000;
+	border-collapse:collapse;
+}
+table td, table th{
+	border:1px solid #000;
+	padding:5px;
+}
+/*등록,수정폼*/
+form{
+	width:500px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
+ul{
+	list-style:none;
+}
+label{
+	width:100px;
+	float:left;
+}
+.error-color{
+		color:red;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

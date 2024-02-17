@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 어노테이션을 이용한 유효성 체크 설정 -->
+	<annotation-driven/>
+	
+	<!-- Controller 빈 자동 스캔 -->
+    <context:component-scan base-package="kr.spring.board.controller"/>
+    
+    <!-- messageSource 지정 -->
+    <beans:bean id="messageSource"
+        class="org.springframework.context.support.ResourceBundleMessageSource">
+        <beans:property name="basenames">
+            <beans:list>
+                <beans:value>messages.validation</beans:value>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+    <!-- viewResolver 설정 -->
+    <beans:bean id="viewResolver"
+       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/"/>
+        <beans:property name="suffix" value=".jsp"/>
+    </beans:bean> 
+</beans:beans>
