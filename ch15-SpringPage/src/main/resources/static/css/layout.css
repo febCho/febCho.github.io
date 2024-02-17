@@ -1,0 +1,529 @@
+@charset "UTF-8";
+
+/* 전체 레이아웃
+--------------------*/
+#main{
+	width:1024px;
+	margin:0 auto;
+	font-size:10pt;
+	font-family:"맑은 고딕";
+}
+#main_header{
+	margin-bottom:10px;
+	padding:0 10px 0 0;
+}
+#main_body{
+	padding:5px 5px 30px 5px;
+	min-height:500px;
+}
+#main_footer{
+	background-color:yellow;
+}
+a:link{
+	text-decoration:none;
+	color:#000000;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+a:hover{
+	text-decoration:none;
+	color:#999999;
+}
+
+/* 좌측 메뉴 레이아웃(Admin, MY페이지)
+--------------------*/
+#page_nav{
+	float:left;
+	width:25%;
+	min-height:530px;
+}
+#page_body{
+	width:75%;
+	float:left;
+}
+.page-clear{
+	clear:both;
+}
+/* 페이지 기본 레이아웃
+--------------------*/
+.page-main{
+	width:98%;
+	margin:0 auto;/*중앙 정렬*/
+}
+.page-one{
+	width:600px;
+	margin:0 auto;
+}
+
+/* 공통 메시지 및 버튼
+--------------------*/
+.result-display{
+	width:400px;
+	height:200px;
+	margin:100px auto;/*상하 좌우*/
+	border:1px solid #000;/*테두리*/
+	display: flex;/*하위 요소를 수직으로 쌓을 수 있는 공간을 만듬*/
+  	align-items: center;/*세로 정렬*/
+  	justify-content: center;/*가로 정렬*/
+}
+.error-color{
+	color:#ff0000;
+}
+.default-btn{
+	padding:5px 20px;
+	border:1px solid #09aa5c;
+	border-radius:2px;
+	color:#fff;
+	background-color:#09aa5c;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+/* 공통 정렬
+--------------------*/
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+
+/* 상단 메뉴
+--------------------*/
+
+/* 메인
+--------------------*/
+
+/* 공통 등록, 수정 폼
+--------------------*/
+form{
+	width:500px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
+ul{
+	list-style:none;
+}
+form ul li{
+	clear:both;
+}
+form ul li label{
+	padding-top:10px;
+	width:110px;
+	float:left;/*태그를 왼쪽으로 정렬*/
+}
+input{
+	margin-top:4px;
+	padding:5px;
+}
+input[type="text"],input[type="password"],input[type="email"]{
+	width:360px;
+}
+input[type="text"]#title{/*내가 추가한 코드*/
+	width:240px;
+}
+input[type="checkbox"]{
+	margin:11px 0 10px 0;
+}
+[type="submit"],[type="button"]{
+	height:33px;
+}
+
+/* 회원가입 등록, 수정 폼
+--------------------*/
+#member_register{
+	width:840px;
+}
+#member_register ul, #member_modify ul{
+	padding-left:120px;
+}
+#member_register input[id="id"]{
+	width:236px;
+}
+#member_register input[id="zipcode"], #member_modify input[id="zipcode"]{
+	width:220px;
+}
+#member_modify{
+	width:96%;
+}
+#member_delete input[id="id"], #member_delete input[id="passwd"]{
+	width:240px;
+}
+
+/* 로그인
+--------------------*/
+#member_login{
+	width:320px;
+	padding:0;
+	margin:0 auto;
+	border:none;
+}
+
+#member_login ul{
+	padding:0;
+}
+.floating-label{
+	position:relative;
+}
+.floating-label > .form-input{
+	width:300px;
+	height:32px;
+	padding:0.55rem 0.55rem;
+}
+.floating-label > label{
+	position:absolute;
+	top:0;
+	left:0;
+	padding:1.25rem 0.65rem;
+	transition:all 0.25s;
+}
+.floating-label > .form-input::placeholder{
+	color:transparent;
+}
+.floating-label > .form-input:focus, 
+.floating-label > .form-input:not(:placeholder-shown){
+	padding-top:1.125rem;
+	padding-bottom:0.125rem;
+}
+.floating-label > .form-input:focus + label, 
+.floating-label > .form-input:not(:placeholder-shown) + label{
+	opacity:0.65;
+	transform:scale(0.85) translateY(-0.5rem) translateX(-0.5rem);
+}
+#member_login .login-btn{
+	width:320px;
+}
+#member_login label[for="auto"]{
+	width:220px;
+	padding:0 0 5px 0;
+}
+/* Admin, MY페이지 공통
+--------------------*/
+.side-bar{
+	margin:10px 10px 10px 0;
+	padding:10px;
+	/*사이드 바의 높이가 컨텐트의 높이와 동일하게 자동 조절*/
+	margin-bottom:-9999px;
+	padding-bottom:9999px;
+	background-color:#cecccc;
+}
+.side-bar ul{
+	margin:0;
+	padding:0;
+}
+.side-bar ul li{
+	padding:5px 10px 5px 10px;
+}
+.side-bar ul li img{
+	margin-left:3px;
+}
+.side-height{
+	/*사이드 바의 높이가 컨텐트의 높이와 동일하게 자동 조절하기 위해 흘러넘친 배경색은 숨김*/
+	overflow:hidden;
+	margin-bottom:10px;
+}
+.menu-btn{
+	width:100%;
+	height:50px;
+	font-size:12pt;
+	background-color:#fcfcfc;
+	border-color:#b7b5b5;
+	border-radius:5px;
+}
+/* MY페이지
+--------------------*/
+.camera{
+	width:50px;
+	height:50px;
+	border-radius:100%;
+	background-color:#d3bb72;
+	position:relative;
+	top:-60px;
+	left:140px;
+	border:2px solid #fff;
+	cursor:pointer;
+	padding:13px 0 0 10px;
+}
+.my-photo{
+	object-fit:cover;
+	object-position:top;
+	border-radius:50%;
+}
+
+/* 공통 목록
+--------------------*/
+form#search_form{
+	width:98%;
+	padding-bottom:0;
+	border:none;
+}
+ul.search{
+	width:380px;
+	list-style:none;
+	padding:0;
+	margin:0 auto;
+}
+ul.search li{
+	margin:0 0 9px 0;
+	padding:0;
+	display:inline;
+}
+ul.search.li select{
+	height:30px;
+}
+table.basic-table{
+	width:100%;
+	margin:7px 0;
+	border:1px solid #000;
+	border-collapse:collapse;
+}
+table.basic-table td, table.basic-table th{
+	border:1px solid #000;
+	padding:5px;
+}
+table.striped-table{
+	width:100%;
+	margin:7px 0;
+	border:1px solid #FFF;
+	font-size:15px;
+	border-collapse:collapse;
+}
+table.striped-table td, table.striped-table th{
+	padding:.7em .5em;
+	vertical-align:middle;
+}
+table.striped-table th{
+	font-weight:bold;
+	background:#E1E1E1;
+}
+table.striped-table td{
+	border-bottom:1px solid rgba(0,0,0,.1);
+}
+table.striped-table tr:nth-child(odd){
+	background-color:rgb(250,250,247);
+}
+
+/* 게시판 목록
+--------------------*/
+form#search_form #order{
+	height:32px;
+}
+
+/* 게시판 폼
+--------------------*/
+form#register_form, form#update_form{
+	padding:0 0 10px 0;
+	width:800px;
+}
+form#register_form ul, form#update_form ul{
+	padding:20px;
+}
+
+/* 게시판 글 상세
+--------------------*/
+ul.detail-info{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+ul.detail-info li{
+	margin:0;
+	padding-top:5px;
+	display:inline-block;
+}
+ul.detail-info li:last-child{
+	vertical-align:top;
+}
+.detail-img{
+	max-width:500px;
+}
+.detail-content img{
+	max-width:940px;
+}
+#output_fav{
+	cursor:pointer;
+}
+#output_fcount{
+	width:50px;
+	display:inline-block;
+}
+div#reply_div{
+	padding:5px 10px 40px 10px;
+	margin-top:10px;
+	background-color:#eeeeee;	
+}
+form#re_form{
+	width:650px;
+	border:none;
+}
+span.re-title{
+	color:#000;
+	font-size:12pt;
+	line-height:200%;
+}
+span.letter-count{
+	font-size:10pt;
+	color:#999;
+}
+textarea.rep-content{
+	width:90%;
+	height:50px;
+	margin:10px 10px;
+}
+div#re_first,div#mre_first{
+	float:left;
+	width:70%;
+	padding-left:15px;
+	margin-bottom:10px;
+}
+div#re_second, div#mre_second{
+	float:left;
+	width:19%;
+	margin-bottom:10px;
+}
+div#loading{
+	width:100px;
+	height:50px;
+	/*정중앙에 div 배치*/
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	/*하위 요소를 수직으로 쌓을 수 있는 공간 만듦*/
+	display:flex;
+	/*세로 정렬*/
+	align-items:center;
+	/*가로 정렬*/
+	justify-content:center;
+}
+div.paging-button{
+	text-align:right;
+}
+div#output{
+	clear:both;
+}
+form#mre_form{
+	border:none;
+	margin:5px;
+}
+
+/* 채팅방 생성
+--------------------*/
+#talk_member{
+	margin-top:15px;
+	padding:10px;
+}
+.member-span{
+	background-color:#CCC;
+	border-radius:15px;
+	padding:7px;
+	margin:20px;
+	cursor:pointer;
+	display:inline-block;
+	min-width:60px;
+}
+.member-span > sup{
+	border-radius:50%;
+	display:inline-block;
+	width:25px;
+	height:10px;
+	text-align:center;
+	padding-bottom:15px;
+	margin-left:5px;
+	background-color:#FFF;
+}
+ul#search_area{
+	padding:0;
+	width:360px;
+	margin-left:8px;
+	border-left:1px solid black;
+	border-right:1px solid black;
+	position:absolute;
+	background-color:#FFF;
+}
+ul#search_area li{
+	padding:8px;
+	cursor:pointer;
+	border-bottom:1px solid black;	
+}
+
+/* 채팅하기
+--------------------*/
+#chatting_message{
+	border:1px solid black;
+	width:660px;
+	height:300px;
+	margin:0 auto;
+	padding:10px;
+	overflow:auto;
+}
+.date-position{
+	text-align:center;
+}
+.date-position span{
+	display:inline-block;
+	width:300px;
+	height:20px;
+	border-radius:10px;
+	background-color:#f2efef;
+}
+.from-position{
+	width:300px;
+	margin:10px 0 10px 330px;
+}
+.from-position .item{
+	background-color:yellow;
+	padding:10px;
+	min-height:50px;
+	border-radius:20px;
+	border-top-right-radius:0;
+}
+.to-position{
+	width:300px;
+	margin:10px 0 10px 0;
+}
+.to-position .item{
+	background-color:pink;
+	padding:10px;
+	min-height:50px;
+	border-radius:20px;
+	border-top-left-radius:0;
+}
+.to-position div.space-photo{
+	float:left;
+	width:15%;
+}
+.to-position div.space-message{
+	float:left;
+	width:85%;
+}
+.to-position div.space-clear{
+	clear:both;
+}
+.member-message{
+	width:230px;
+	min-height:24px;
+	border-radius:10px;
+	background-color:#eee;
+	margin:10px auto;
+	text-align:center;
+	padding:8px 4px;
+	clear:both;
+}
+form#detail_form{
+	width:640px;
+}
+#message{
+	width:578px;
+	margin-left:-20px;
+}
+#message_btn{
+	margin-top:-20px;
+	padding-left:20px;
+}
+#message_btn input{
+	width:584px;
+}

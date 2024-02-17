@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.board.dao.BoardMapper">
+	<!-- 게시판 글 등록 -->
+	<insert id="insertBoard" parameterType="boardVO">
+		INSERT INTO spboard(
+			board_num,
+			title,
+			content,
+			filename,
+			ip,
+			mem_num)
+		VALUES (
+			spboard_seq.nextval,
+			#{title},
+			#{content},
+			#{filename,jdbcType=VARCHAR},
+			#{ip},
+			#{mem_num}
+		)
+	</insert>
+	
+	<!-- sql 태그와 include 태그를 이용해 SQL문 재사용 -->
+	<sql id="boardSearch">
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="keyfield == 1">
+					title LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 2">
+					id LIKE '%' || #{keyword} || '%' OR
+					nick_name LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 3">
+					content LIKE '%' || #{keyword} || '%'
+				</if>
+				<if test="keyfield == 4">
+					title LIKE '%' || #{keyword} || '%' OR
+					content LIKE '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+	<sql id="boardOrder">
+		<if test="order == 1">
+			ORDER BY board_num DESC
+		</if>
+		<if test="order == 2">
+			ORDER BY hit DESC
+		</if>
+		<if test="order == 3">
+			ORDER BY fav_cnt DESC NULLS LAST
+		</if>
+		<if test="order == 4">
+			ORDER BY re_cnt DESC NULLS LAST
+		</if>
+	</sql>
+	
+	<!-- 게시판 글의 총 개수/검색 개수 -->
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM spboard JOIN spmember USING(mem_num)
+		<include refid="boardSearch"></include>
+	</select>
+	
+	<!-- 게시판 전체 목록/검색 목록 -->
+	<select id="selectList" parameterType="map" resultType="boardVO">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT
+					board_num,
+					<![CDATA[
+					REPLACE(REPLACE(title,'<', '&lt;'),'>','&gt;') title,
+					]]>
+					hit,
+					reg_date,
+					mem_num,
+					id,
+					nick_name,
+					re_cnt,
+					fav_cnt
+				FROM spboard
+				LEFT OUTER JOIN (SELECT COUNT(*) re_cnt, board_num FROM spboard_reply GROUP BY board_num) USING(board_num) 
+				LEFT OUTER JOIN (SELECT COUNT(*) fav_cnt, board_num FROM spboard_fav GROUP BY board_num) USING(board_num)
+				JOIN spmember USING(mem_num) 
+				<include refid="boardSearch"></include>
+				<include refid="boardOrder"></include>)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>		
+	</select>
+	
+	<!-- 글 상세 -->
+	<select id="selectBoard" parameterType="integer">
+		SELECT
+			*
+		FROM spboard 
+		JOIN spmember USING(mem_num)
+		LEFT OUTER JOIN spmember_detail USING(mem_num)
+		WHERE board_num=#{board_num}
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="updateBoard" parameterType="boardVO">
+		UPDATE spboard SET
+			<if test="filename != null">
+			filename=#{filename},
+			</if>
+			title=#{title},
+			content=#{content},
+			ip=#{ip},
+			modify_date=SYSDATE
+		WHERE board_num=#{board_num}
+	</update>
+	
+	<!-- 댓글 등록 -->
+	<insert id="insertReply" parameterType="boardReplyVO">
+		INSERT INTO spboard_reply(
+			re_num,
+			re_content,
+			re_ip,
+			board_num,
+			mem_num)
+		VALUES (
+			spreply_seq.nextval,
+			#{re_content},
+			#{re_ip},
+			#{board_num},
+			#{mem_num})
+	</insert>
+	
+	<!-- 댓글 목록 -->
+	<select id="selectListReply" parameterType="map" resultType="boardReplyVO">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT 
+					re_num,
+					<![CDATA[
+					REPLACE(REPLACE(re_content,'<','&lt;'),'>','&gt;') re_content,
+					]]>
+					re_date,
+					re_mdate,
+					board_num,
+					mem_num,
+					id,
+					nick_name
+				FROM spboard_reply
+				JOIN spmember USING(mem_num)
+				WHERE board_num=#{board_num}
+				ORDER BY re_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>			
+	</select>
+</mapper>

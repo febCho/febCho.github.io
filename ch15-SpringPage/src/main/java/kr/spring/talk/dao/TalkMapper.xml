@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.talk.dao.TalkMapper">
+	<resultMap type="talkRoomVO" id="talkMap">
+		<result property="talkVO.message" column="message"/>
+		<result property="talkVO.chat_date" column="chat_date"/>
+		<result property="talkMemberVO.room_name" column="room_name"/>
+	</resultMap>
+	
+	<!-- 채팅방 목록 생성하기 -->
+	<sql id="talkSub">
+		FROM sptalkroom JOIN sptalk_member m USING(talkroom_num) 
+		LEFT OUTER JOIN (SELECT
+							talkroom_num,
+							mem_num,
+							COUNT(*) room_cnt
+						FROM sptalk_read
+						WHERE mem_num=#{mem_num}
+						GROUP BY talkroom_num,mem_num) USING(talkroom_num)
+		LEFT OUTER JOIN (SELECT
+							talk_num,
+							<![CDATA[
+							REPLACE(REPLACE(REPLACE(message,'<','&lt;'),'>','&gt;'),'@{member}@','') message,
+							]]>
+							chat_date,
+							talkroom_num
+						FROM sptalk WHERE talk_num IN (SELECT
+														MAX(talk_num) talk_num
+													FROM sptalk
+													GROUP BY talkroom_num))
+		USING(talkroom_num)
+		WHERE m.mem_num=#{mem_num}
+		<if test="keyword!=null and keyword!=''">
+			AND room_name LIKE '%' || #{keyword} || '%'
+		</if>														
+	</sql>
+	
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		SELECT
+			COUNT(*)
+		<include refid="talkSub"></include>
+	</select>
+	
+	<select id="selectTalkRoomList" parameterType="map" resultMap="talkMap">
+		SELECT
+			*
+		FROM (SELECT
+				a.*,
+				rownum rnum
+			FROM (SELECT 
+					*
+				<include refid="talkSub"></include>
+				ORDER BY chat_date DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>		
+	</select>
+	
+	<!-- 채팅 멤버 읽기 -->
+	<select id="selectTalkMember" parameterType="integer" resultType="talkMemberVO">
+		SELECT
+			mem_num,
+			id,
+			room_name
+		FROM sptalk_member JOIN spmember
+		USING(mem_num)
+		WHERE talkroom_num=#{talkroom_num}
+	</select>
+	
+	<!-- 채팅 메시지 읽기 -->
+	<select id="selectTalkDetail" parameterType="integer" resultType="talkVO">
+		SELECT
+			<![CDATA[
+			REPLACE(REPLACE(message,'<','&lt;'),'<','&gt;') message,
+			]]>
+			chat_date,
+			read_count,
+			mem_num,
+			id
+		FROM sptalk 
+		LEFT OUTER JOIN (SELECT
+							talk_num,
+							COUNT(*) read_count
+						FROM sptalk_read
+						GROUP BY talk_num) USING(talk_num)
+		JOIN spmember USING(mem_num)
+		WHERE talkroom_num=#{talkroom_num} 
+		AND chat_date >= (SELECT
+							member_date
+						FROM sptalk_member
+						WHERE talkroom_num=#{talkroom_num}
+						AND mem_num=#{mem_num})/*멤버 등록일 이후의 정보만 읽어옴*/
+		ORDER BY chat_date ASC				
+	</select>
+</mapper>
