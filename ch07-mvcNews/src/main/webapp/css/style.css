@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+body{
+	padding:0;
+	margin:0;
+}
+.page-main{
+	width:800px;
+	margin:0 auto;
+}
+.result-display{
+	width:400px;
+	height:200px;
+	margin:50px auto;
+	border:1px solid #000;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.align-center{
+	text-align:center;
+}
+.align-right{
+	text-align:right;
+}
+/*목록*/
+table{
+	width:100%;
+	border:1px solid #000;
+	border-collapse:collapse;
+	margin-top:5px;
+}
+table td, table th{
+	border:1px solid #000;
+	padding:5px;
+}
+/*등록, 수정 폼*/
+form{
+	width:500px;
+	margin:0 auto;
+	border:1px solid #000;
+	padding:10px 10px 10px 30px;
+}
+ul{
+	list-style:none;
+}
+label {
+	width:100px;
+	float:left;
+}
+
+
+
+
+
