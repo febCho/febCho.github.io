@@ -15,7 +15,7 @@
 <!--project-->
 <br>
 <h3>📚 Projects 📚</h3>
-<h3>🏫 AllCampus 🏫 [이동](https://github.com/Nahyun-K/AllCampus)</h3>
+<h3>🏫 AllCampus 🏫 → https://github.com/Nahyun-K/AllCampus</h3>
 <details>
   <summary>
     <b>대학생 커뮤니티 올캠퍼스</b>는 이렇게 탄생했습니다.
@@ -64,7 +64,7 @@
   </div>
 </details>
 <br>
-<h3>🏠 ZIBI 🏠 [이동](https://github.com/rlarkawk2/ZIBI)</h3>
+<h3>🏠 ZIBI 🏠 → https://github.com/rlarkawk2/ZIBI</h3>
 <details>
   <summary>
     <b>자취 플랫폼 ZIBI</b>는 이렇게 탄생했습니다.
