@@ -166,3 +166,6 @@
     <img src="https://img.shields.io/badge/GMail-D14836?style=for-the-badge&logo=Gmail&logoColor=white" />
   </a>
  </div>
+
+<!--footer-->
+<img src="https://capsule-render.vercel.app/api?type=Waving&color=99a0ff&height=100&section=footer"/>
