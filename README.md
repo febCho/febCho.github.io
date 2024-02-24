@@ -144,6 +144,9 @@
   <br>
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/Elastic_Search-005571?style=for-the-badge&logo=elasticsearch&logoColor=white">
+  <br>
+  <img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?style=for-the-badge&logo=Adobe Photoshop&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Adobe Illustrator-FF9A00?style=for-the-badge&logo=Adobe Illustrator&logoColor=white"/>
 </div>
 <br>
 <div>
@@ -152,9 +155,9 @@
 </div>
 <div>
   <a href="https://velog.io/@d_isbetterthan_p">
-    <img src="https://img.shields.io/badge/Tech%20Blog-30B980?style=for-the-badge&logo=Blogger&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Tech Blog-20C997?style=for-the-badge&logo=velog&logoColor=white"/>
   </a>
-  <a href="#">
+  <a href="https://aeolian-legume-9a0.notion.site/905d56a4aafb4a9886dc3c3dfabde6a8?pvs=4">
     <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white" />
   </a>
  </div>
