@@ -26,8 +26,8 @@
   <b>'우리가 만들어가는, 모두를 위한 대학 생활'</b>이라는 브랜드 슬로건 하에<br>
   학생들이 주도하는 대학 커뮤니티로서 학생들이 안전하게 대화를 나눌 수 있는 장을 마련하고자 합니다.
 </details>
-<img src="https://github.com/febCho/projectFav/assets/144503463/2119f884-8ea9-4ea4-84e5-b88b7c1e5e15" height="250">
-<img src="https://github.com/febCho/projectFav/assets/144503463/3b155692-7338-4d98-898f-c6a4528d8d0d" height="250">
+<img src="https://github.com/febCho/projectFav/assets/144503463/2119f884-8ea9-4ea4-84e5-b88b7c1e5e15" height="230">
+<img src="https://github.com/febCho/projectFav/assets/144503463/3b155692-7338-4d98-898f-c6a4528d8d0d" height="230">
 <br><br>
 <details>
   <summary>
