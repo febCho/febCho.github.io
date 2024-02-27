@@ -9,13 +9,14 @@
   ✅ 내 이름을 걸고 하는 일, 잘하고 싶습니다.
 </div>
 <br>
+<h4><a href="https://github.com/febCho/CodingTest_Java">✅ [Java] Coding Test Repository</a></h4>
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=febCho&show_icons=true&theme=graywhite">
 <img src="https://velog-readme-stats.vercel.app/api?name=d_isbetterthan_p">
 
 <!--project-->
 <br>
 <h3>📚 Projects 📚</h3>
-<h3>🏫 AllCampus 🏫 → https://github.com/Nahyun-K/AllCampus</h3>
+<h4>🏫 AllCampus 🏫 <a href="https://github.com/Nahyun-K/AllCampus">(Click To Move)</a></h4>
 <details>
   <summary>
     <b>대학생 커뮤니티 올캠퍼스</b>는 이렇게 탄생했습니다.
@@ -64,7 +65,7 @@
   </div>
 </details>
 <br>
-<h3>🏠 ZIBI 🏠 → https://github.com/rlarkawk2/ZIBI</h3>
+<h4>🏠 ZIBI 🏠 <a href="https://github.com/rlarkawk2/ZIBI">(Click To Move)</a></h4>
 <details>
   <summary>
     <b>자취 플랫폼 ZIBI</b>는 이렇게 탄생했습니다.
